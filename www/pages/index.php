@@ -9,11 +9,11 @@
 <body>
     <div class="container">
         <h2>Login to Steam</h2>
-        <form action="your-login-script.php" method="POST">
+        <form action="../functions/login.php" method="POST">
             <input type="text" name="email" placeholder="Email Address" required>
             <input type="password" name="password" placeholder="Password" required>
             <p class="register-link">Didn't sign up yet? <a href="registration.php">Click here to register.</a></p>
-            <input type="submit" value="Login">
+            <input type="submit" value="Sign In">
         </form>
     </div>
 </body>
