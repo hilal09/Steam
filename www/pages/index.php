@@ -12,6 +12,7 @@
         <form action="your-login-script.php" method="POST">
             <input type="text" name="email" placeholder="Email Address" required>
             <input type="password" name="password" placeholder="Password" required>
+            <p class="register-link">Didn't sign up yet? <a href="registration.php">Click here to register.</a></p>
             <input type="submit" value="Login">
         </form>
     </div>
