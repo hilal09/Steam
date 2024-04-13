@@ -21,12 +21,12 @@ if ($result->num_rows == 1) {
         header("Location: ../pages/dashboard.php");
         exit();
     } else {
-        // Password is incorrect, redirect back to login page
+        // Password is incorrect, redirect back to register page
         header("Location: ../pages/registration.php?error=invalid");
         exit();
     }
 } else {
-    // User not found, redirect back to login page
+    // User not found, redirect back to register page
     header("Location: ../pages/registration.php?error=notfound");
     exit();
 }

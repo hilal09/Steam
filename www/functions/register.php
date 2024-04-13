@@ -16,8 +16,8 @@ if ($conn->query($sql) === TRUE) {
     header("Location: ../pages/dashboard.php");
     exit();
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+    header("Location: ../pages/login.php?error=notfound");
+    exit();}
 
 $conn->close();
 ?>
