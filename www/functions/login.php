@@ -7,7 +7,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 // Prepare and execute SQL statement to fetch user from the database
-$sql = "SELECT * FROM users WHERE email='$email'";
+$sql = "SELECT * FROM user_accounts WHERE email='$email'";
 $result = $conn->query($sql);
 
 if ($result->num_rows == 1) {

@@ -10,7 +10,7 @@ $password = $_POST['password'];
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // Prepare and execute SQL statement to insert user into the database
-$sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$hashed_password')";
+$sql = "INSERT INTO user_accounts (name, email, password) VALUES ('$name', '$email', '$hashed_password')";
 if ($conn->query($sql) === TRUE) {
     // Registration successful, redirect to dashboard page
     header("Location: ../pages/dashboard.php");

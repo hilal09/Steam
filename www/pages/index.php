@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
+    <h1>Steam</h1>
     <div class="container">
-        <h2>Login to Steam</h2>
+        <h2>Login</h2>
         <form action="../functions/login.php" method="POST">
             <input type="text" name="email" placeholder="Email Address" required>
             <input type="password" name="password" placeholder="Password" required>
