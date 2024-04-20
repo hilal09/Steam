@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #14143c;
+    color: white;
 }
 
 .container {
@@ -125,4 +126,56 @@ input[type="submit"]:hover {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.profile-container {
+    display: flex;
+    min-height: 100vh; 
+}
+
+.profile-sidebar {
+    width: 250px; 
+    background-color: #252547; 
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.profile-sidebar .profile-user-card {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-sidebar .profile-user-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.profile-sidebar .profile-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-sidebar .profile-navigation ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+}
+
+.profile-sidebar .profile-navigation ul li a:hover,
+.profile-sidebar .profile-navigation ul li a.active {
+    background-color: #3d3d5c; 
+}
+
+/* Profile main */
+.profile-main {
+    flex-grow: 1; 
+    background-color: #1d1d3e; 
+    padding: 20px;
+    box-sizing: border-box;
 }
