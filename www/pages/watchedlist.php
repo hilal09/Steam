@@ -1,3 +1,16 @@
+<?php
+session_start(); // Sitzung starten
+
+include "../functions/db_connection.php"; // Datenbankverbindung einbinden
+
+// Überprüfen, ob der Benutzer angemeldet ist
+if(!isset($_SESSION['loggedin'])) {
+    // Falls nicht, weiterleiten zur Anmeldeseite oder anderen geeigneten Aktionen
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
