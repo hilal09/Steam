@@ -36,6 +36,11 @@ h2 {
     font-size: 30px;
 }
 
+.tm {
+    font-size: 0.8em; /* Ändere die Größe nach Bedarf */
+    vertical-align: top; /* Ausrichtung des Handelszeichen-Symbols anpassen */
+}
+
 input[type="text"], input[type="password"] {
     width: 100%;
     padding: 10px;

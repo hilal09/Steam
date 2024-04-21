@@ -1,3 +1,3 @@
 <div class="logo">
-    <h2>Steam<sup>TM</sup></h2>
+    <h2>Steam<span class="tm">TM</span></h2>
 </div>
