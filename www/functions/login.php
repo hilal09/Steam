@@ -22,12 +22,12 @@ if ($result->num_rows == 1) {
         exit();
     } else {
         // Password is incorrect, redirect back to register page
-        header("Location: ../pages/index.php?error=E-Mail Address or Password is invalid.&t=" . time());
+        header("Location: ../pages/index.php?error=E-Mail Address or Password is invalid.");
         exit();
     }
 } else {
     // User not found, redirect back to register page
-    header("Location: ../pages/index.php?error=E-Mail Address or Password is invalid.&t=" . time());
+    header("Location: ../pages/index.php?error=E-Mail Address or Password is invalid.");
     exit();
 }
 

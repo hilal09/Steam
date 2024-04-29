@@ -3,8 +3,6 @@
 }
 
 body {
-    margin: 0;
-    padding: 0;
     background-color: #141450;
 }
 
@@ -15,6 +13,47 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login_register_container {
+    max-width: 50%; /* Set maximum width */
+    width: 50%; /* Ensure container takes full width of its parent */
+    border: 2px solid #fff;
+    padding: 5%; /* Use relative units for padding */
+    background-color: #fff;
+    border-radius: 15px;
+    margin: 10% auto; /*centers container */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+    min-height: 300px; /* Set minimum height to ensure it's visible */
+    display: flex; /* Use flexbox for vertical centering */
+    justify-content: center; /* Center content vertically */
+}
+
+
+.login_register_container form label{
+    color: #888;
+    font-size: 18px;
+}
+.login_register_container button {
+    background: #14143c;
+    padding: 10px 25px;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    margin: 20px auto 0; /* Adjust top margin for spacing */
+    display: block; 
+}
+
+.login_register_container button:hover {
+    opacity: .7;
+}
+
+.error{
+    background: #f2dede;
+    color: #a94442;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
 }
 
 h1 {
