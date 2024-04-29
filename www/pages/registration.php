@@ -10,10 +10,15 @@
     <div class="container">
         <h2>Sign up to Steam</h2>
         <form action="../functions/register.php" method="POST">
+
+            <label>Name</label>
             <input type="text" name="name" placeholder="Name" required>
+            <label>E-Mail Address</label>
             <input type="text" name="email" placeholder="Email Address" required>
+            <label>Password</label>
             <input type="password" name="password" placeholder="Password" required>
-            <input type="submit" value="Sign Up">
+            
+            <button type="submit">Sign In</button>
         </form>
     </div>
 </body>
