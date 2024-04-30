@@ -1,35 +1,45 @@
 <?php
-session_start();
-include 'db_connection.php';
+include "db_connection.php";
 
-// Get form data
-$email = $_POST['email'];
-$password = $_POST['password'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-// Prepare and execute SQL statement to fetch user from the database
-$sql = "SELECT * FROM user_accounts WHERE email='$email'";
-$result = $conn->query($sql);
-
-if ($result->num_rows == 1) {
-    // User found, verify password
-    $row = $result->fetch_assoc();
-    if (password_verify($password, $row['password'])) {
-        // Password is correct, set session variables and redirect to dashboard
-        $_SESSION['loggedin'] = true;
-        $_SESSION['name'] = $row['name'];
-        // Redirect to dashboard
-        header("Location: ../pages/dashboard.php");
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header("Location: ../pages/index.php?error=E-Mail required.");
         exit();
+    }
+
+    // Prepare and execute SQL statement with prepared statements
+    $stmt = $conn->prepare("SELECT * FROM user_accounts WHERE email = ?");
+    $stmt->bind_param("s", $email); //s bedeutet, dass die Email ein String ist
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+        // Verify password
+        if (password_verify($password, $row['password'])) {
+            // Password is correct, set session variables and redirect
+            session_start();
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['name'] = $row['name'];
+
+            header("Location: ../pages/dashboard.php");
+            exit();
+        } else {
+            // Incorrect password
+            header("Location: ../pages/index.php?error=Invalid e-mail or password.");
+            exit();
+        }
     } else {
-        // Password is incorrect, redirect back to register page
-        header("Location: ../pages/index.php?error=E-Mail Address or Password is invalid.");
+        // User not found
+        header("Location: ../pages/index.php?error=Invalid e-mail or password.");
         exit();
     }
 } else {
-    // User not found, redirect back to register page
-    header("Location: ../pages/index.php?error=E-Mail Address or Password is invalid.");
+    header("Location: ../pages/index.php");
     exit();
 }
-
-$conn->close();
 ?>

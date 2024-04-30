@@ -11,13 +11,16 @@
 
         <div class="login_register_container">
             <form action="../functions/register.php" method="POST">
-
+                <!-- Damit Error angezeigt wird -->
+                <?php if (isset($_GET['error'])) { ?>
+                <p class="error"><?php echo $_GET['error']; ?></p>
+                <?php } ?>
                 <label>Name</label>
-                <input type="text" name="name" placeholder="Name" required>
+                <input type="text" name="name" placeholder="Name">
                 <label>E-Mail Address</label>
-                <input type="text" name="email" placeholder="Email Address" required>
+                <input type="text" name="email" placeholder="Email Address">
                 <label>Password</label>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password">
                 
                 <button type="submit">Sign Up</button>
             </form>

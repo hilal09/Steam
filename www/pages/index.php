@@ -19,11 +19,11 @@ if (isset($_SESSION['user_id'])) {
     <body>
         <h1>Sign In to Steam</h1>
         <div class="login_register_container">
-            <form action="../functions/login_.php" method="POST">
-            <!––damit Error-Anzeige auftaucht-->
-            <?php if (isset($_GET['error'])) { ?>
-                <p class="error"><?php echo $_GET['error']; ?></p>
-            <?php } ?>
+            <form action="../functions/login.php" method="POST">
+                <!-- Display welcome text -->
+                <?php if (isset($_GET['error'])) { ?>
+                    <p class="error"><?php echo $_GET['error']; ?></p>
+                <?php } ?>
                 <label>E-Mail Address </label>
                 <input type="text" name="email" placeholder="Email Address" ><br>
                 <label>Password</label>
