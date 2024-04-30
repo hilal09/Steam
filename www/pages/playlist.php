@@ -1,5 +1,16 @@
-<?php include "../functions/navigation.php"; ?>
-<?php include "../functions/logo.php"; ?>
+<?php
+session_start(); // Add session_start() at the beginning
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect the user to the login page if not logged in
+    header("Location: ../pages/index.php");
+    exit();
+}
+
+include "../functions/navigation.php";
+include "../functions/logo.php"; 
+?>
 
 <!DOCTYPE html>
 <html lang="de">

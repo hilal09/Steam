@@ -1,3 +1,13 @@
+<?php
+session_start(); // Add session_start() at the beginning
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect the user to the login page if not logged in
+    header("Location: ../pages/index.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -12,6 +22,11 @@
 
     <div class="container-button" id="bigButton">
         Add new series
+        <!-- Display welcome text -->
+    <h1>Hello, <?php echo $_SESSION['name']; ?></h1>
+    <a href="../functions/logout.php">Logout</a>
     </div>
+
+    
 </body>
 </html>
