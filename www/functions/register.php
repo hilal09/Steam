@@ -40,7 +40,19 @@ $stmt->bind_param("sss", $name, $email, $hashed_password);
 $stmt->execute();
 
 if ($stmt->affected_rows > 0) {
-    // Registration successful, redirect to dashboard page
+    // Get the ID of the newly inserted user
+    $user_id = $stmt->insert_id;
+
+    // Insert three playlists for the user
+    $playlist_names = array("Watched", "Currently watching", "Wishlist");
+    foreach ($playlist_names as $playlist_name) {
+        $sql = "INSERT INTO my_playlists (user_id, playlist_name) VALUES (?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("is", $user_id, $playlist_name);
+        $stmt->execute();
+    }
+
+    // Redirect to dashboard page
     header("Location: ../pages/dashboard.php");
     exit();
 } else {
@@ -48,6 +60,7 @@ if ($stmt->affected_rows > 0) {
     header("Location: ../pages/registration.php?error=registrationfailed");
     exit();
 }
+
 
 $stmt->close();
 $conn->close();
