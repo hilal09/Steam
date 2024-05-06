@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 06. Mai 2024 um 20:57
+-- Erstellungszeit: 06. Mai 2024 um 22:36
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -49,7 +49,7 @@ INSERT INTO `default_series` (`id`, `title`, `year`, `seasons`, `genre`, `platfo
 (5, 'Game of Thrones', 2011, 8, 'Action', 'HBO', NULL),
 (6, 'The Mandalorian', 2019, 2, 'Sci-fi', 'Disney+', NULL),
 (7, 'The Haunting of Hill House', 2018, 2, 'Horror', 'Netflix', NULL),
-(8, 'The Handmaids Tale', 2017, 4, 'Drama', 'Hulu', NULL),
+(8, 'The Handmaid\'s Tale', 2017, 4, 'Drama', 'Hulu', NULL),
 (9, 'The Witcher', 2019, 2, 'Fantasy', 'Netflix', NULL),
 (10, 'Westworld', 2016, 3, 'Sci-fi', 'HBO', NULL),
 (11, 'Brooklyn Nine-Nine', 2013, 8, 'Comedy', 'NBC', NULL),
@@ -69,15 +69,6 @@ CREATE TABLE `my_playlists` (
   `user_id` int(11) DEFAULT NULL,
   `playlist_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Daten für Tabelle `my_playlists`
---
-
-INSERT INTO `my_playlists` (`playlist_id`, `user_id`, `playlist_name`) VALUES
-(1, 5, 'Watched'),
-(2, 5, 'Currently watching'),
-(3, 5, 'Wishlist');
 
 -- --------------------------------------------------------
 
@@ -108,17 +99,9 @@ CREATE TABLE `user_accounts` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `password` varchar(255) DEFAULT NULL,
+  `avatar` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Daten für Tabelle `user_accounts`
---
-
-INSERT INTO `user_accounts` (`id`, `name`, `email`, `password`) VALUES
-(1, 'Hilal', 'h.cub@web.de', '$2y$10$1grTDt65zzfq7n0ucR8K4OT23dUWDYVnRW8BOY8vv3Zfuj0Fq3xXC'),
-(4, 'test', 'test@test.de', '$2y$10$6xbVmD3JhySkLB5fWDgOzOa1lcCH/SSuIZukEDjkEllgAa278ntPq'),
-(5, 'test1', 'test1@test.de', '$2y$10$9ZBMslqANjZ6CogSg3ehiedi6X.46XSnMNig/UG8ru9lnmGPT7HE2');
 
 --
 -- Indizes der exportierten Tabellen
