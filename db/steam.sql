@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 20. Apr 2024 um 21:48
+-- Erstellungszeit: 06. Mai 2024 um 20:57
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -29,20 +29,34 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `default_series` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `year` int(11) DEFAULT NULL,
+  `title` varchar(40) NOT NULL,
+  `year` int(4) NOT NULL,
   `seasons` int(11) DEFAULT NULL,
-  `summary` text DEFAULT NULL
+  `genre` varchar(30) NOT NULL,
+  `platform` varchar(30) DEFAULT NULL,
+  `picture_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Daten für Tabelle `default_series`
 --
 
-INSERT INTO `default_series` (`id`, `title`, `year`, `seasons`, `summary`) VALUES
-(1, 'Breaking Bad', 2008, 5, 'A high school chemistry teacher turned methamphetamine manufacturer.'),
-(2, 'Game of Thrones', 2011, 8, 'Seven noble families fight for control of the mythical land of Westeros.'),
-(3, 'Stranger Things', 2016, 4, 'A group of kids uncover a series of supernatural occurrences in their small town.');
+INSERT INTO `default_series` (`id`, `title`, `year`, `seasons`, `genre`, `platform`, `picture_url`) VALUES
+(1, 'Breaking Bad', 2008, 5, 'Drama', 'Netflix', NULL),
+(2, 'Friends', 1994, 10, 'Comedy', 'HBO Max', NULL),
+(3, 'Stranger Things', 2016, 4, 'Sci-fi', 'Netflix', NULL),
+(4, 'BoJack Horseman', 2014, 6, 'Animation', 'Netflix', NULL),
+(5, 'Game of Thrones', 2011, 8, 'Action', 'HBO', NULL),
+(6, 'The Mandalorian', 2019, 2, 'Sci-fi', 'Disney+', NULL),
+(7, 'The Haunting of Hill House', 2018, 2, 'Horror', 'Netflix', NULL),
+(8, 'The Handmaids Tale', 2017, 4, 'Drama', 'Hulu', NULL),
+(9, 'The Witcher', 2019, 2, 'Fantasy', 'Netflix', NULL),
+(10, 'Westworld', 2016, 3, 'Sci-fi', 'HBO', NULL),
+(11, 'Brooklyn Nine-Nine', 2013, 8, 'Comedy', 'NBC', NULL),
+(12, 'Loki', 2021, 1, 'Action', 'Disney+', NULL),
+(13, 'Rick and Morty', 2013, 5, 'Animation', 'Adult Swim', NULL),
+(14, 'The Boys', 2019, 2, 'Action', 'Amazon Prime', NULL),
+(15, 'Money Heist', 2017, 5, 'Thriller', 'Netflix', NULL);
 
 -- --------------------------------------------------------
 
@@ -55,6 +69,15 @@ CREATE TABLE `my_playlists` (
   `user_id` int(11) DEFAULT NULL,
   `playlist_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `my_playlists`
+--
+
+INSERT INTO `my_playlists` (`playlist_id`, `user_id`, `playlist_name`) VALUES
+(1, 5, 'Watched'),
+(2, 5, 'Currently watching'),
+(3, 5, 'Wishlist');
 
 -- --------------------------------------------------------
 
@@ -71,7 +94,8 @@ CREATE TABLE `my_series` (
   `year` int(4) NOT NULL,
   `seasons` int(11) DEFAULT NULL,
   `genre` varchar(30) NOT NULL,
-  `platform` varchar(30) DEFAULT NULL
+  `platform` varchar(30) DEFAULT NULL,
+  `picture_url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -92,17 +116,13 @@ CREATE TABLE `user_accounts` (
 --
 
 INSERT INTO `user_accounts` (`id`, `name`, `email`, `password`) VALUES
-(1, 'Hilal', 'h.cub@web.de', '$2y$10$1grTDt65zzfq7n0ucR8K4OT23dUWDYVnRW8BOY8vv3Zfuj0Fq3xXC');
+(1, 'Hilal', 'h.cub@web.de', '$2y$10$1grTDt65zzfq7n0ucR8K4OT23dUWDYVnRW8BOY8vv3Zfuj0Fq3xXC'),
+(4, 'test', 'test@test.de', '$2y$10$6xbVmD3JhySkLB5fWDgOzOa1lcCH/SSuIZukEDjkEllgAa278ntPq'),
+(5, 'test1', 'test1@test.de', '$2y$10$9ZBMslqANjZ6CogSg3ehiedi6X.46XSnMNig/UG8ru9lnmGPT7HE2');
 
 --
 -- Indizes der exportierten Tabellen
 --
-
---
--- Indizes für die Tabelle `default_series`
---
-ALTER TABLE `default_series`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indizes für die Tabelle `my_playlists`
@@ -132,16 +152,10 @@ ALTER TABLE `user_accounts`
 --
 
 --
--- AUTO_INCREMENT für Tabelle `default_series`
---
-ALTER TABLE `default_series`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT für Tabelle `my_playlists`
 --
 ALTER TABLE `my_playlists`
-  MODIFY `playlist_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `playlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT für Tabelle `my_series`
@@ -153,7 +167,7 @@ ALTER TABLE `my_series`
 -- AUTO_INCREMENT für Tabelle `user_accounts`
 --
 ALTER TABLE `user_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints der exportierten Tabellen
@@ -170,7 +184,6 @@ ALTER TABLE `my_playlists`
 --
 ALTER TABLE `my_series`
   ADD CONSTRAINT `my_series_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_accounts` (`id`),
-  ADD CONSTRAINT `my_series_ibfk_2` FOREIGN KEY (`series_id`) REFERENCES `default_series` (`id`),
   ADD CONSTRAINT `my_series_ibfk_3` FOREIGN KEY (`playlist_id`) REFERENCES `my_playlists` (`playlist_id`);
 COMMIT;
 
