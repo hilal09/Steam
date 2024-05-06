@@ -1,3 +1,25 @@
+<?php
+require '../functions/db_connection.php';
+
+$sql = "SELECT * FROM user_accounts WHERE id = 1";
+
+//$stmt = $conn->prepare($sql);
+//$stmt->bind_param("d", 1);
+// $stmt->execute();
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $user_ID = $row['id'];
+        $name = $row['name'];
+        $email = $row['email'];
+        $avatar = $row['avatar'];
+        //echo $user_ID." ". $name." ". $email." ". $avatar." ";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +37,7 @@
                     <img src="path_to_avatar.jpg" alt="User Avatar">
                 </div>
                 <div class="profile-user-info">
-                    <h2>Anna Muller</h2>
+                    <h2><?php echo $name; ?></h2>
                 </div>
             </div>
             <nav class="profile-navigation">
@@ -29,19 +51,23 @@
         <main class="profile-main">
             <section id="profile-section" class="profile-content active">
                 <h1>My Account</h1>
-                <form class="account-form" action="profile_update.php" method="POST" enctype="multipart/form-data">
+                <form class="account-form" action="../functions/profile_function.php" method="POST" enctype="multipart/form-data">
                     <div class="account-profile-picture">
                         <img src="<?php echo $userData['avatar'] ?? 'path_to_default_avatar.jpg'; ?>" alt="Profile Picture" class="profile-picture">
-                        <input type="file" name="avatar" accept="image/*">
+                        <input type="file" name="fileToUpload" accept="image/*">
                         <button type="submit" class="change-photo-button">Upload Photo</button>
                     </div>
+                    <!--
+                        Calling the actual user data from the database.
+                     -->
+                    <input type="hidden" name="userId" value="<?php echo $user_ID ?>">
                     <div class="form-group">
-                        <label for="full-name">Full Name</label>
-                        <input type="text" id="full-name" name="full_name" value="Anna Muller">
+                        <label for="full-name">Name</label>
+                        <input type="text" id="full-name" name="full_name" value="<?php echo $name ?>">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" value="anna.muller@email.com">
+                        <input type="email" id="email" name="email" value="<?php echo $email ?>">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -56,7 +82,7 @@
                     <div class="form-group">
                         <h2>Change Email</h2>
                         <label for="current-email">Current email</label>
-                        <input type="email" id="current-email" name="current_email" value="anna.muller@email.com">
+                        <input type="email" id="current-email" name="current_email" value="<?php echo $email ?>">
                         <label for="new-email">New Email</label>
                         <input type="email" id="new-email" name="new_email">
                         <button type="button" class="btn-confirm">Confirm</button>
