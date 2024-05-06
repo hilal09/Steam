@@ -24,12 +24,35 @@ if (!isset($_SESSION['user_id'])) {
     <?php include "../functions/logo.php"; ?>
 
     <div class="container-button" id="bigButton">
-        Add new series
-        <!-- Display welcome text -->
-    <h1>Hello, <?php echo $_SESSION['name']; ?></h1>
-    <a href="../functions/logout.php">Logout</a>
+        <a href="../pages/add_playlist.php" class="add-playlist-button">Add new Playlist</a>
+            <div class="add-playlist-content">
+                <!--was aktuell geschaut wird-->
+            </div>
     </div>
 
-    
+    <div class="currently-watching">
+        <p>Currently Watching</p>
+        <a href="add_series.php" class="add-series-button">+</a>
+            <div class="playlist-content">
+                <!--was aktuell geschaut wird-->
+            </div>
+    </div>
+
+    <div class="want-to-watch">
+            <p>Want to Watch</p>
+            <a href="add_series.php" class="add-series-button">+</a>
+            <div class="playlist-content">
+                <!-- Hier können Serien hinzugefügt werden, die man schauen möchte -->
+            </div>
+        </div>
+
+    <div class="already-watched">
+        <p>Already Watched</p>
+        <a href="add_series.php" class="add-series-button">+</a>
+        <div class="playlist-content">
+            <!-- Hier können bereits geschauten Serien hinzugefügt werden -->
+        </div>
+    </div>
+
 </body>
 </html>
