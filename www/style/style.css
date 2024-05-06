@@ -1,65 +1,93 @@
 *{
-    font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
 }
-
 body {
-    background-color: #141450;
+    background-image: url("background.png");
+    background-attachment: fixed;
+    background-size: cover; /* Make the background image cover the entire element */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: center; /* Center the background image */
 }
 
-.container {
-    width: 400px;
-    margin: 50px auto;
-    background-color: #14143c;
+/* Styles within the .register_login class */
+
+.register_login * {
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+}
+
+.register_login form {
+    background-color: rgba(255, 255, 255, 0.09); /* Set background color with transparency */
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login_register_container {
-    max-width: 50%; /* Set maximum width */
-    width: 50%; /* Ensure container takes full width of its parent */
-    border: 2px solid #fff;
-    padding: 5%; /* Use relative units for padding */
-    background-color: #fff;
     border-radius: 15px;
-    margin: 10% auto; /*centers container */
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
-    min-height: 300px; /* Set minimum height to ensure it's visible */
-    display: flex; /* Use flexbox for vertical centering */
-    justify-content: center; /* Center content vertically */
+    text-align: center;
+    /* Center vertically */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Center horizontally */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Adjust width as needed */
+    max-width: 400px; /* Set max-width to prevent the form from taking up the whole page */
 }
 
-
-.login_register_container form label{
-    color: #888;
-    font-size: 18px;
-}
-.login_register_container button {
-    background: #14143c;
-    padding: 10px 25px;
-    color: #fff;
-    border-radius: 10px;
-    border: none;
-    margin: 20px auto 0; /* Adjust top margin for spacing */
-    display: block; 
+.register_login form label {
+    display: block;
+    margin-bottom: 15px;
 }
 
-.login_register_container button:hover {
-    opacity: .7;
-}
-
-.error{
-    background: #f2dede;
-    color: #a94442;
+.register_login form input[type="text"],
+.register_login form input[type="password"] {
+    width: calc(100% - 50px); /* Adjust width as needed */
     padding: 10px;
-    width: 95%;
-    border-radius: 5px;
+    margin: 0 auto 15px; /* Center horizontally */
+    display: block;
+    border: 1.5px solid white; /* Set border color */
+    border-radius: 10px; /* Set border radius */
+    background-color: transparent; /* Set background to transparent */
+}
+
+.register_login form button {
+    width: calc(100% - 20px); /* Adjust width as needed */
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #0011ff; /* Set your desired button color */
+    cursor: pointer;
+    display: block;
+    margin: 0 auto; /* Center horizontally */
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
 }
 
 h1 {
+    font-family: "Space Mono", sans-serif;
+    font-size: 40px;
     color: white;
     text-align: center;
-    margin-top: 70px;
+    position: absolute; /* Position the header */
+    top: 20%; /* Adjust top position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 2; /* Ensure the header is on top */
+}
+
+/* Media query for smaller devices */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px; /* Adjust font size for smaller devices */
+        top: 40px; /* Adjust top position for smaller devices */
+    }
 }
 
 h2 {
@@ -78,42 +106,6 @@ h2 {
     vertical-align: top; /* Ausrichtung des Handelszeichen-Symbols anpassen */
 }
 
-input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.register-link {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.register-link a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.register-link a:hover {
-    text-decoration: underline;
-}
-
-input[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
 
 .navbar {
     display: flex;
