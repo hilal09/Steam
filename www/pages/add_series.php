@@ -4,8 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Serien hinzufügen</title>
-<!-- Hier kannst du deine CSS-Datei einbinden, falls du eine externe CSS-Datei verwendest -->
 <link rel="stylesheet" href="style.css">
+<style>
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%; /* Zentriert vertikal */
+  left: 50%; /* Zentriert horizontal */
+  transform: translate(-50%, -50%); /* Zentriert das Popup */
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.popup-content {
+  width: 250px; /* Reduziere die Breite des Popup-Inhalts */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
 
@@ -26,36 +50,37 @@
   </div>
 </div>
 
-<!-- JavaScript zum Öffnen und Schließen des Popup-Fensters -->
 <script>
 function openPopup() {
   document.getElementById("addSeriesPopup").style.display = "block";
 }
 
 function closePopup() {
-  document.getElementById("addSeriesPopup").style.display = "none";
+  window.location.href = "dashboard.php"; // Weiterleitung zur Dashboard-Seite
 }
 </script>
 
 <!-- PHP-Skript zum Verarbeiten des Formulars -->
 <?php
-// Verbindung zur Datenbank herstellen
+if(isset($_POST['submit'])) {
+    // Verbindung zur Datenbank herstellen
 
-// Informationen aus dem Formular erfassen
-$title = $_POST['title'];
-$year = $_POST['year'];
-$seasons = $_POST['seasons'];
-$genre = $_POST['genre'];
-$platform = $_POST['platform'];
-$picture_url = $_POST['picture_url'];
+    // Informationen aus dem Formular erfassen
+    $title = isset($_POST['title']) ? $_POST['title'] : '';
+    $year = isset($_POST['year']) ? $_POST['year'] : '';
+    $seasons = isset($_POST['seasons']) ? $_POST['seasons'] : '';
+    $genre = isset($_POST['genre']) ? $_POST['genre'] : '';
+    $platform = isset($_POST['platform']) ? $_POST['platform'] : '';
+    $picture_url = isset($_POST['picture_url']) ? $_POST['picture_url'] : '';
 
-// SQL-Befehl zum Einfügen der Serie in die Datenbank
-$sql = "INSERT INTO my_series (user_id, series_id, playlist_id, title, year, seasons, genre, platform, picture_url) 
-        VALUES (:user_id, :series_id, :playlist_id, :title, :year, :seasons, :genre, :platform, :picture_url)";
+    // SQL-Befehl zum Einfügen der Serie in die Datenbank
+    $sql = "INSERT INTO my_series (user_id, series_id, playlist_id, title, year, seasons, genre, platform, picture_url) 
+            VALUES (:user_id, :series_id, :playlist_id, :title, :year, :seasons, :genre, :platform, :picture_url)";
 
-// SQL-Befehl ausführen und Parameter binden
+    // SQL-Befehl ausführen und Parameter binden
 
-// Weiterleiten oder Fehler behandeln
+    // Weiterleiten oder Fehler behandeln
+}
 ?>
 
 </body>
