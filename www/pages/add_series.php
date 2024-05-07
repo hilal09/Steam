@@ -39,36 +39,43 @@
 <div class="popup" id="addSeriesPopup">
   <div class="popup-content">
     <span class="close-btn" onclick="closePopup()">&times;</span>
-    <h2>Add series</h2>
+    <h2>add your series</h2>
     <form action="add_series.php" method="POST">
       <div class="form-group">
         <label for="title">Titel:</label>
         <input type="text" id="title" name="title" required>
+        <span class="error" id="title-error">Please fill out this field.</span>
       </div>
       <div class="form-group">
         <label for="year">Year:</label>
         <input type="text" id="year" name="year" required>
+        <span class="error" id="year-error">Please fill out this field.</span>
       </div>
       <div class="form-group">
         <label for="seasons">Seasons:</label>
-        <input type="number" id="seasons" name="seasons" required>
+        <input type="text" id="seasons" name="seasons" required>
+        <span class="error" id="seasons-error">Please fill out this field.</span>
       </div>
       <div class="form-group">
         <label for="genre">Genre:</label>
         <input type="text" id="genre" name="genre" required>
+        <span class="error" id="genre-error">Please fill out this field.</span>
       </div>
       <div class="form-group">
         <label for="platform">Platform:</label>
-        <input type="text" id="platform" name="platform">
+        <input type="text" id="platform" name="platform" required>
+        <span class="error" id="platform-error">Please fill out this field.</span>
       </div>
       <div class="form-group">
         <label for="picture_url">Picture URL:</label>
         <input type="text" id="picture_url" name="picture_url">
       </div>
-      <button type="submit" name="submit">save</button>
+      <!-- Ein Submit-Button zum Absenden des Formulars -->
+      <button type="submit" name="submit">Serie hinzufügen</button>
     </form>
   </div>
 </div>
+
 
 <script>
 function openPopup() {
@@ -77,6 +84,60 @@ function openPopup() {
 
 function closePopup() {
   window.location.href = "dashboard.php"; // Weiterleitung zur Dashboard-Seite
+}
+
+function showEditLink(serieId) {
+  // Zeige den Bearbeitungslink für die angegebene Serie an
+}
+
+function hideEditLink(serieId) {
+  // Verstecke den Bearbeitungslink für die angegebene Serie
+}
+
+function validateForm() {
+  var title = document.getElementById("title").value;
+  var year = document.getElementById("year").value;
+  var seasons = document.getElementById("seasons").value;
+  var genre = document.getElementById("genre").value;
+  var platform = document.getElementById("platform").value;
+  var pictureUrl = document.getElementById("picture_url").value;
+  
+  if (!title) {
+    document.getElementById("title-error").style.display = "block";
+    return false;
+  } else {
+    document.getElementById("title-error").style.display = "none";
+  }
+  
+  if (!year) {
+    document.getElementById("year-error").style.display = "block";
+    return false;
+  } else {
+    document.getElementById("year-error").style.display = "none";
+  }
+  
+  if (!seasons) {
+    document.getElementById("seasons-error").style.display = "block";
+    return false;
+  } else {
+    document.getElementById("seasons-error").style.display = "none";
+  }
+  
+  if (!genre) {
+    document.getElementById("genre-error").style.display = "block";
+    return false;
+  } else {
+    document.getElementById("genre-error").style.display = "none";
+  }
+  
+  if (!platform) {
+    document.getElementById("platform-error").style.display = "block";
+    return false;
+  } else {
+    document.getElementById("platform-error").style.display = "none";
+  }
+  
+  return true;
 }
 </script>
 
