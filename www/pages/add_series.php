@@ -6,6 +6,18 @@
 <title>Serien hinzufügen</title>
 <link rel="stylesheet" href="style.css">
 <style>
+.popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
 .popup {
   position: fixed;
   top: 50%;
