@@ -6,43 +6,33 @@
 <title>Serien hinzufügen</title>
 <link rel="stylesheet" href="style.css">
 <style>
-.popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-        }
 .popup {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.8); /* Dunkler Hintergrund */
-  padding: 20px;
-  border-radius: 8px;
-  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dunkler Hintergrund */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .popup-content {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
+  position: relative; /* Added */
 }
 .popup-content input {
   display: block;
   margin-bottom: 10px;
 }
 .close-btn {
-  position: absolute;
+  position: absolute; /* Changed */
   top: 5px;
   right: 5px;
   cursor: pointer;
-  color: white;
+  color: black; /* Changed */
 }
 .error {
   display: none;
@@ -54,31 +44,36 @@
 
 <div class="popup" id="addSeriesPopup">
   <div class="popup-content">
-    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <span class="close-btn" onclick="closePopup()">&times;</span> <!-- Moved inside popup-content -->
     <h2>Add series</h2>
-    <form action="add_series.php" method="POST">
+    <form action="add_series.php" method="POST" onsubmit="return validateForm()">
       <!-- Hier ein verstecktes Input-Feld, um die Playlist-ID zu übergeben -->
       <input type="hidden" id="playlist_id" name="playlist_id" value="<?php echo $playlist_id; ?>">
       <!-- Weitere Formularfelder für die Serieninformationen -->
       <div class="form-group">
         <label for="title">Titel:</label>
         <input type="text" id="title" name="title" required>
+        <div id="title-error" class="error">Bitte geben Sie einen Titel ein.</div>
       </div>
       <div class="form-group">
         <label for="year">Year:</label>
         <input type="text" id="year" name="year" required>
+        <div id="year-error" class="error">Bitte geben Sie ein Jahr ein.</div>
       </div>
       <div class="form-group">
         <label for="seasons">Seasons:</label>
         <input type="number" id="seasons" name="seasons" required>
+        <div id="seasons-error" class="error">Bitte geben Sie die Anzahl der Staffeln ein.</div>
       </div>
       <div class="form-group">
         <label for="genre">Genre:</label>
         <input type="text" id="genre" name="genre" required>
+        <div id="genre-error" class="error">Bitte geben Sie das Genre ein.</div>
       </div>
       <div class="form-group">
         <label for="platform">Platform:</label>
         <input type="text" id="platform" name="platform">
+        <div id="platform-error" class="error">Bitte geben Sie die Plattform ein.</div>
       </div>
       <div class="form-group">
         <label for="picture_url">Picture URL:</label>
@@ -91,13 +86,14 @@
 
 <script>
 function openPopup(playlistId) {
-  document.getElementById("addSeriesPopup").style.display = "block";
+  document.getElementById("addSeriesPopup").style.display = "flex";
   // Playlist-ID im versteckten Input-Feld setzen
   document.getElementById("playlist_id").value = playlistId;
 }
-// Funktion zum Schließen des Popups
+
+// Funktion zum Schließen des Popups und Zurückkehren zur Dashboard-Seite
 function closePopup() {
-  window.location.href = "dashboard.php"; // Weiterleitung zur Dashboard-Seite
+  window.location.href = "dashboard.php";
 }
 
 function validateForm() {
@@ -145,71 +141,5 @@ function validateForm() {
   return true;
 }
 </script>
-
-
-
-<!-- PHP-Skript zum Verarbeiten des Formulars -->
-<?php
-if(isset($_POST['submit'])) {
-    // Verbindung zur Datenbank herstellen
-
-    // Informationen aus dem Formular erfassen
-    $title = isset($_POST['title']) ? $_POST['title'] : '';
-    $year = isset($_POST['year']) ? $_POST['year'] : '';
-    $seasons = isset($_POST['seasons']) ? $_POST['seasons'] : '';
-    $genre = isset($_POST['genre']) ? $_POST['genre'] : '';
-    $platform = isset($_POST['platform']) ? $_POST['platform'] : '';
-    $picture_url = isset($_POST['picture_url']) ? $_POST['picture_url'] : '';
-    $playlist_id = isset($_POST['playlist_id']) ? $_POST['playlist_id'] : '';
-
-    // Hier musst du sicherstellen, dass deine Verbindung zur Datenbank hergestellt wird.
-    // An dieser Stelle solltest du deine Verbindung zur Datenbank einrichten.
-    // Das kann auf verschiedene Weise geschehen, abhängig davon, welche Art von Datenbank du verwendest und welche PHP-Bibliotheken verfügbar sind.
-
-    // Wenn du beispielsweise MySQL und PDO verwendest, könnte die Verbindung so aussehen:
-    try {
-        $pdo = new PDO('mysql:host=localhost;dbname=deineDatenbank', 'deinBenutzername', 'deinPasswort');
-        // Setze den PDO-Error-Modus auf Exception
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch(PDOException $e) {
-        die('Verbindung zur Datenbank fehlgeschlagen: ' . $e->getMessage());
-    }
-
-    // SQL-Befehl zum Einfügen der Serie in die Datenbank
-    $sql = "INSERT INTO my_series (user_id, series_id, playlist_id, title, year, seasons, genre, platform, picture_url) 
-            VALUES (:user_id, :series_id, :playlist_id, :title, :year, :seasons, :genre, :platform, :picture_url)";
-
-    // PDO-Statement vorbereiten
-    $stmt = $pdo->prepare($sql);
-
-    // Parameter binden
-    $stmt->bindParam(':user_id', $user_id);
-    $stmt->bindParam(':series_id', $series_id);
-    $stmt->bindParam(':playlist_id', $playlist_id);
-    $stmt->bindParam(':title', $title);
-    $stmt->bindParam(':year', $year);
-    $stmt->bindParam(':seasons', $seasons);
-    $stmt->bindParam(':genre', $genre);
-    $stmt->bindParam(':platform', $platform);
-    $stmt->bindParam(':picture_url', $picture_url);
-
-    // Hier müsstest du sicherstellen, dass $user_id und $series_id definiert sind.
-    // $user_id könnte beispielsweise die ID des eingeloggten Benutzers sein.
-    // $series_id könnte eine eindeutige ID für die neue Serie sein. Diese könnte automatisch erzeugt werden oder auf andere Weise festgelegt werden.
-
-    // Weiterleiten oder Fehler behandeln
-    try {
-        // SQL-Befehl ausführen
-        $stmt->execute();
-        // Weiterleitung zur Dashboard-Seite nach erfolgreichem Hinzufügen der Serie
-        header('Location: dashboard.php');
-        exit; // Beende das Skript nach der Weiterleitung
-    } catch(PDOException $e) {
-        // Fehlerbehandlung, falls das Einfügen fehlschlägt
-        echo 'Fehler beim Hinzufügen der Serie: ' . $e->getMessage();
-    }
-}
-?>
-
 </body>
 </html>
