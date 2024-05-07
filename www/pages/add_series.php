@@ -8,25 +8,29 @@
 <style>
 .popup {
   position: fixed;
-  top: 50%;
+  top: 100px; /* Position des Popups von oben */
   left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8); /* Hintergrundfarbe mit Transparenz */
+  padding: 10px;
+  border-radius: 8px;
   z-index: 999;
 }
 .popup-content {
-  width: 300px; /* Breite des Popup-Inhalts erhöhen */
-  padding: 20px;
   background-color: #fff;
+  padding: 20px;
   border-radius: 8px;
+}
+.popup-content input {
+  display: block;
+  margin-bottom: 10px;
 }
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
+  color: white;
 }
 </style>
 </head>
@@ -35,33 +39,15 @@
 <div class="popup" id="addSeriesPopup">
   <div class="popup-content">
     <span class="close-btn" onclick="closePopup()">&times;</span>
-    <h2>Serie hinzufügen</h2>
+    <h2 style="margin-bottom: 20px;">Serie hinzufügen</h2>
     <form action="add_series.php" method="POST">
-      <div class="form-group">
-        <label for="title">Titel:</label>
-        <input type="text" id="title" name="title" required>
-      </div>
-      <div class="form-group">
-        <label for="year">Jahr:</label>
-        <input type="text" id="year" name="year" required>
-      </div>
-      <div class="form-group">
-        <label for="seasons">Staffeln:</label>
-        <input type="number" id="seasons" name="seasons" required>
-      </div>
-      <div class="form-group">
-        <label for="genre">Genre:</label>
-        <input type="text" id="genre" name="genre" required>
-      </div>
-      <div class="form-group">
-        <label for="platform">Plattform:</label>
-        <input type="text" id="platform" name="platform">
-      </div>
-      <div class="form-group">
-        <label for="picture_url">Bild URL:</label>
-        <input type="text" id="picture_url" name="picture_url">
-      </div>
-      <button type="submit" name="submit">Serie hinzufügen</button>
+      <input type="text" id="title" name="title" placeholder="Titel" required>
+      <input type="text" id="year" name="year" placeholder="Jahr" required>
+      <input type="number" id="seasons" name="seasons" placeholder="Staffeln" required>
+      <input type="text" id="genre" name="genre" placeholder="Genre" required>
+      <input type="text" id="platform" name="platform" placeholder="Plattform">
+      <input type="text" id="picture_url" name="picture_url" placeholder="Bild URL">
+      <button type="submit" name="submit" style="margin-top: 10px;">Serie hinzufügen</button>
     </form>
   </div>
 </div>
@@ -72,10 +58,9 @@ function openPopup() {
 }
 
 function closePopup() {
-  window.location.href = "dashboard.php"; // Weiterleitung zur Dashboard-Seite
+  document.getElementById("addSeriesPopup").style.display = "none";
 }
 </script>
-
 
 
 <!-- PHP-Skript zum Verarbeiten des Formulars -->
