@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="style.css">
 <style>
 .popup {
-  display: none;
   position: fixed;
   top: 50%; /* Zentriert vertikal */
   left: 50%; /* Zentriert horizontal */
@@ -33,7 +32,6 @@
 </head>
 <body>
 
-<!-- HTML für das Popup-Fenster -->
 <div class="popup" id="addSeriesPopup">
   <div class="popup-content">
     <span class="close-btn" onclick="closePopup()">&times;</span>
@@ -59,6 +57,8 @@ function closePopup() {
   window.location.href = "dashboard.php"; // Weiterleitung zur Dashboard-Seite
 }
 </script>
+
+
 
 <!-- PHP-Skript zum Verarbeiten des Formulars -->
 <?php
