@@ -39,43 +39,36 @@
 <div class="popup" id="addSeriesPopup">
   <div class="popup-content">
     <span class="close-btn" onclick="closePopup()">&times;</span>
-    <h2>add your series</h2>
+    <h2>Add series</h2>
     <form action="add_series.php" method="POST">
       <div class="form-group">
         <label for="title">Titel:</label>
         <input type="text" id="title" name="title" required>
-        <span class="error" id="title-error">Please fill out this field.</span>
       </div>
       <div class="form-group">
         <label for="year">Year:</label>
         <input type="text" id="year" name="year" required>
-        <span class="error" id="year-error">Please fill out this field.</span>
       </div>
       <div class="form-group">
         <label for="seasons">Seasons:</label>
-        <input type="text" id="seasons" name="seasons" required>
-        <span class="error" id="seasons-error">Please fill out this field.</span>
+        <input type="number" id="seasons" name="seasons" required>
       </div>
       <div class="form-group">
         <label for="genre">Genre:</label>
         <input type="text" id="genre" name="genre" required>
-        <span class="error" id="genre-error">Please fill out this field.</span>
       </div>
       <div class="form-group">
         <label for="platform">Platform:</label>
-        <input type="text" id="platform" name="platform" required>
-        <span class="error" id="platform-error">Please fill out this field.</span>
+        <input type="text" id="platform" name="platform">
       </div>
       <div class="form-group">
         <label for="picture_url">Picture URL:</label>
         <input type="text" id="picture_url" name="picture_url">
       </div>
-      <!-- Ein Submit-Button zum Absenden des Formulars -->
-      <button type="submit" name="submit">Serie hinzufügen</button>
+      <button type="submit" name="submit">save</button>
     </form>
   </div>
 </div>
-
 
 <script>
 function openPopup() {
@@ -93,7 +86,6 @@ function showEditLink(serieId) {
 function hideEditLink(serieId) {
   // Verstecke den Bearbeitungslink für die angegebene Serie
 }
-
 function validateForm() {
   var title = document.getElementById("title").value;
   var year = document.getElementById("year").value;
