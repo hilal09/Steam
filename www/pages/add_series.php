@@ -39,15 +39,33 @@
 <div class="popup" id="addSeriesPopup">
   <div class="popup-content">
     <span class="close-btn" onclick="closePopup()">&times;</span>
-    <h2 style="margin-bottom: 20px;">Serie hinzufügen</h2>
+    <h2>Add series</h2>
     <form action="add_series.php" method="POST">
-      <input type="text" id="title" name="title" placeholder="Titel" required>
-      <input type="text" id="year" name="year" placeholder="Jahr" required>
-      <input type="number" id="seasons" name="seasons" placeholder="Staffeln" required>
-      <input type="text" id="genre" name="genre" placeholder="Genre" required>
-      <input type="text" id="platform" name="platform" placeholder="Plattform">
-      <input type="text" id="picture_url" name="picture_url" placeholder="Bild URL">
-      <button type="submit" name="submit" style="margin-top: 10px;">Serie hinzufügen</button>
+      <div class="form-group">
+        <label for="title">Titel:</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" required>
+      </div>
+      <div class="form-group">
+        <label for="seasons">Seasons:</label>
+        <input type="number" id="seasons" name="seasons" required>
+      </div>
+      <div class="form-group">
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" required>
+      </div>
+      <div class="form-group">
+        <label for="platform">Platform:</label>
+        <input type="text" id="platform" name="platform">
+      </div>
+      <div class="form-group">
+        <label for="picture_url">Picture URL:</label>
+        <input type="text" id="picture_url" name="picture_url">
+      </div>
+      <button type="submit" name="submit">save</button>
     </form>
   </div>
 </div>
@@ -60,8 +78,8 @@ function openPopup() {
 function closePopup() {
   window.location.href = "dashboard.php"; // Weiterleitung zur Dashboard-Seite
 }
-
 </script>
+
 
 
 <!-- PHP-Skript zum Verarbeiten des Formulars -->
