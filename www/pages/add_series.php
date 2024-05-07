@@ -8,16 +8,16 @@
 <style>
 .popup {
   position: fixed;
-  top: 50%; /* Zentriert vertikal */
-  left: 50%; /* Zentriert horizontal */
-  transform: translate(-50%, -50%); /* Zentriert das Popup */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
   z-index: 999;
 }
 .popup-content {
-  width: 250px; /* Reduziere die Breite des Popup-Inhalts */
+  width: 300px; /* Breite des Popup-Inhalts erhöhen */
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
@@ -41,8 +41,26 @@
         <label for="title">Titel:</label>
         <input type="text" id="title" name="title" required>
       </div>
-      <!-- Weitere Eingabefelder für Jahr, Staffel, Genre, Plattform und Bild -->
-      <!-- Ein Submit-Button zum Absenden des Formulars -->
+      <div class="form-group">
+        <label for="year">Jahr:</label>
+        <input type="text" id="year" name="year" required>
+      </div>
+      <div class="form-group">
+        <label for="seasons">Staffeln:</label>
+        <input type="number" id="seasons" name="seasons" required>
+      </div>
+      <div class="form-group">
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" required>
+      </div>
+      <div class="form-group">
+        <label for="platform">Plattform:</label>
+        <input type="text" id="platform" name="platform">
+      </div>
+      <div class="form-group">
+        <label for="picture_url">Bild URL:</label>
+        <input type="text" id="picture_url" name="picture_url">
+      </div>
       <button type="submit" name="submit">Serie hinzufügen</button>
     </form>
   </div>
