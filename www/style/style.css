@@ -13,18 +13,6 @@ body {
     background-position: center; /* Center the background image */
 }
 
-.container {
-    width: 400px;
-    height: 100px;
-    margin: 20px auto;
-    background-color: rgba(255, 255, 255, 0.09);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    max-width: 400px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 /* Styles within the .register_login class */
 
 .register_login * {
@@ -153,93 +141,6 @@ h2 {
 .navbar ul li a.active {
     border-bottom: 2px solid #fff;
 }
-
-.search-form {
-    display: flex; /* Flex-Container erstellen */
-    align-items: center; /* Vertikal zentrieren */
-    margin-bottom: 9px; /* Abstand unter der Suchleiste */
-    margin-left: 35px; /* Abstand von links */
-    margin-right: 15px;
-    position: relative; /* Position relativ setzen */
-}
-
-.search-form input[type="text"] {
-    width: 250px; /* Breite anpassen */
-    padding: 10px;
-    margin: 0 auto 15px; /* Zentrieren und Abstand unten hinzufügen */
-    display: block;
-    border: 1.5px solid white; /* Weißer Rahmen */
-    border-radius: 10px;
-    background-color: transparent; /* Transparenter Hintergrund */
-}
-
-.filter-options {
-    display: flex;
-    justify-content: center; /* Platzieren Sie die Elemente gleichmäßig im Container */
-    align-items: center;
-    margin-bottom: 20px;
-    margin-left: 15px;
-}
-
-.filter-options select {
-    flex: 2; /* Alle Filteroptionen nehmen gleich viel Platz ein */
-    padding: 10px;
-    margin-right: 10px; /* Fügen Sie einen kleinen Abstand zwischen den Optionen hinzu */
-    border: 1.5px solid white;
-    border-radius: 10px;
-    background-color: transparent;
-    color: white;
-}
-
-.filter-options select option {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-}
-
-.search-form button {
-    width: 50px; /* Breite des Such-Buttons */
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.3); /* Blaue Hintergrundfarbe */
-    cursor: pointer;
-    margin-left: 5px; /* Abstand zwischen Suchleiste und Button */
-    margin-right: 15px;
-    color: white; /* Weiße Schriftfarbe */
-    position: absolute; /* Position absolut setzen */
-    right: 0; /* Rechts ausrichten */
-    top: 0; /* Oben ausrichten */
-}
-
-.filter-options button {
-    width: calc(100% - 50px); /* Breite anpassen */
-    padding: 10px;
-    margin: 0 auto 15px; /* Zentrieren und Abstand unten hinzufügen */
-    display: block;
-    border: 1.5px solid white; /* Weißer Rahmen */
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.container-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 80px;
-    background-color: #14143c;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    border-radius: 8px;
-    font-size: 18px;
-    position: absolute;
-    top: 140px; /* Ändern Sie die Position von bottom auf top */
-    left: 50%; /* Ändern Sie die Position von right auf left */
-    transform: translateX(-50%); /* Horizontal zentrieren */
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
 
 /* Start of Profile css */
 .profile-container {
@@ -578,71 +479,83 @@ h2 {
     text-decoration: none;
 }
 
-.add-playlist-button {
-    color: white;
-    align-items: center;
-    text-decoration: none;
+.search-container {
+    width: 400px;
+    height: 100px;
+    margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.09);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* CSS für das Popup-Fenster */
-.popup {
-    display: none; /* Standardmäßig versteckt */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Hintergrundfarbe mit Transparenz */
-    justify-content: center;
-    align-items: center;
-    z-index: 999; /* Z-Index, um über anderen Inhalten zu liegen */
+.search-form {
+    display: flex; /* Flex-Container erstellen */
+    align-items: center; /* Vertikal zentrieren */
+    margin-bottom: 9px; /* Abstand unter der Suchleiste */
+    margin-left: 35px; /* Abstand von links */
+    margin-right: 15px;
+    position: relative; /* Position relativ setzen */
 }
 
-.popup-content {
-    background-color: #14143c; /* Hintergrundfarbe des Containers */
-    color: white; /* Textfarbe */
-    padding: 20px; /* Abstand um den Inhalt */
-    border-radius: 8px; /* Abgerundete Ecken */
-    width: 300px; /* Breite des Popup-Inhalts */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Schatten */
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px; /* Abstand vom oberen Rand */
-    right: 10px; /* Abstand vom rechten Rand */
-    cursor: pointer;
-    color: white; /* Textfarbe des Schließensymbols */
-    font-size: 20px; /* Schriftgröße des Schließensymbols */
-    text-decoration: none; /* Keine Unterstreichung */
-}
-
-.close-btn:hover {
-    color: #aaa; /* Farbe des Schließensymbols beim Überfahren */
-}
-
-/* Zusätzliche Stilregeln für den Playlist-Formularknopf */
-#playlistForm button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-#playlistForm button:hover {
-    background-color: #0056b3; /* Farbe beim Überfahren */
-}
-
-#playlistForm input[type="text"] {
-    width: 100%;
+.search-form input[type="text"] {
+    width: 250px; /* Breite anpassen */
     padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    margin: 0 auto 15px; /* Zentrieren und Abstand unten hinzufügen */
+    display: block;
+    border: 1.5px solid white; /* Weißer Rahmen */
+    border-radius: 10px;
+    background-color: transparent; /* Transparenter Hintergrund */
+}
+
+.filter-options {
+    display: flex;
+    justify-content: center; /* Platzieren Sie die Elemente gleichmäßig im Container */
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+.filter-options select {
+    flex: 2; /* Alle Filteroptionen nehmen gleich viel Platz ein */
+    padding: 10px;
+    margin-right: 10px; /* Fügen Sie einen kleinen Abstand zwischen den Optionen hinzu */
+    border: 1.5px solid white;
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+}
+
+.filter-options select option {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.search-form button {
+    width: 50px; /* Breite des Such-Buttons */
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3); /* Blaue Hintergrundfarbe */
+    cursor: pointer;
+    margin-left: 5px; /* Abstand zwischen Suchleiste und Button */
+    margin-right: 15px;
+    color: white; /* Weiße Schriftfarbe */
+    position: absolute; /* Position absolut setzen */
+    right: 0; /* Rechts ausrichten */
+    top: 0; /* Oben ausrichten */
+}
+
+.filter-options button {
+    width: calc(100% - 50px); /* Breite anpassen */
+    padding: 10px;
+    margin: 0 auto 15px; /* Zentrieren und Abstand unten hinzufügen */
+    display: block;
+    border: 1.5px solid white; /* Weißer Rahmen */
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .search-results-container {

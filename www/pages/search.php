@@ -57,7 +57,7 @@ if (!isset($_SESSION['user_id'])) {
     <?php include "../functions/navigation.php"; ?>
     <?php include "../functions/logo.php"; ?>
     
-    <div class="container">
+    <div class="search-container">
         <div class="search-form">
             <form action="../functions/search_handler.php" method="GET">
                 <input type="text" name="query" placeholder="What are you looking for?">

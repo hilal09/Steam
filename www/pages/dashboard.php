@@ -23,13 +23,6 @@ if (!isset($_SESSION['user_id'])) {
     <?php include "../functions/navigation.php"; ?>
     <?php include "../functions/logo.php"; ?>
 
-    <div class="container-button" id="bigButton">
-        <a href="../pages/add_playlist.php" class="add-playlist-button">Add new Playlist</a>
-            <div class="add-playlist-content">
-                <!--was aktuell geschaut wird-->
-            </div>
-    </div>
-
     <div class="currently-watching">
         <p>Currently Watching</p>
         <a href="add_series.php" class="add-series-button">+</a>
