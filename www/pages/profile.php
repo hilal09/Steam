@@ -1,7 +1,8 @@
 <?php
+session_start();
 require '../functions/db_connection.php';
-
-$sql = "SELECT * FROM user_accounts WHERE id = 1";
+$user_ID = $_SESSION['user_id'];
+$sql = "SELECT * FROM user_accounts WHERE id = $user_ID";
 
 //$stmt = $conn->prepare($sql);
 //$stmt->bind_param("d", 1);
@@ -37,7 +38,7 @@ if ($result->num_rows > 0) {
         <aside class="profile-sidebar">
             <div class="profile-user-card">
                 <div class="profile-user-avatar">
-                    <img src="path_to_avatar.jpg" alt="User Avatar">
+                    <img src="../uploads/avatars/<?php echo $avatar ?>"  alt="User Avatar">
                 </div>
                 <div class="profile-user-info">
                     <h2><?php echo $name; ?></h2>
@@ -55,11 +56,6 @@ if ($result->num_rows > 0) {
             <section id="profile-section" class="profile-content active">
                 <h1>My Account</h1>
                 <form class="account-form" action="../functions/profile_function.php" method="POST" enctype="multipart/form-data">
-                    <div class="account-profile-picture">
-                        <img src="<?php echo $userData['avatar'] ?? 'path_to_default_avatar.jpg'; ?>" alt="Profile Picture" class="profile-picture">
-                        <input type="file" name="fileToUpload" accept="image/*">
-                        <button type="submit" class="change-photo-button">Upload Photo</button>
-                    </div>
                     <!--
                         Calling the actual user data from the database.
                      -->
@@ -75,6 +71,22 @@ if ($result->num_rows > 0) {
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <ul>
+                        <li><input type="radio" name="cat1" id="cb1" />
+                            <label for="cb1"><img src="../uploads/avatars/cat1.jpg" /></label>
+                        </li>
+                        <li><input type="radio" name="cat2" id="cb2" />
+                            <label for="cb2"><img src="../uploads/avatars/cat2.jpg" /></label>
+                        </li>
+                        <li><input type="radio" name="cat3" id="cb3" />
+                            <label for="cb3"><img src="../uploads/avatars/cat3.jpg" /></label>
+                        </li>
+                        <li><input type="radio" name="cat4" id="cb4" />
+                            <label for="cb4"><img src="../uploads/avatars/cat4.jpg" /></label>
+                        </li>
+                        </ul>
                     </div>
                     <button type="submit" class="save-changes-button">Save Changes</button>
                 </form>
