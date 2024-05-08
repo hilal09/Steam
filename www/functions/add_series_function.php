@@ -26,4 +26,8 @@ if(isset($_POST['submit'])) {
     header("Location: dashboard.php");
     exit();
 }
+
+
+// $stmt->close();
+// $conn->close();
 ?>
