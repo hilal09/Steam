@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 06. Mai 2024 um 22:36
+-- Erstellungszeit: 08. Mai 2024 um 23:13
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -70,6 +70,15 @@ CREATE TABLE `my_playlists` (
   `playlist_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Daten für Tabelle `my_playlists`
+--
+
+INSERT INTO `my_playlists` (`playlist_id`, `user_id`, `playlist_name`) VALUES
+(4, 6, 'Watched'),
+(5, 6, 'Currently watching'),
+(6, 6, 'Wishlist');
+
 -- --------------------------------------------------------
 
 --
@@ -86,7 +95,7 @@ CREATE TABLE `my_series` (
   `seasons` int(11) DEFAULT NULL,
   `genre` varchar(30) NOT NULL,
   `platform` varchar(30) DEFAULT NULL,
-  `picture_url` varchar(255) DEFAULT NULL
+  `picture` mediumblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -102,6 +111,13 @@ CREATE TABLE `user_accounts` (
   `password` varchar(255) DEFAULT NULL,
   `avatar` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `user_accounts`
+--
+
+INSERT INTO `user_accounts` (`id`, `name`, `email`, `password`, `avatar`) VALUES
+(6, 'Hilal', 'hallo@hallo.de', '$2y$10$mmLYAUc0izaDd0FcfbEBEutbDpRZg9PTBKrxjd6FQogUeJE9s8K8S', 0);
 
 --
 -- Indizes der exportierten Tabellen
@@ -138,7 +154,7 @@ ALTER TABLE `user_accounts`
 -- AUTO_INCREMENT für Tabelle `my_playlists`
 --
 ALTER TABLE `my_playlists`
-  MODIFY `playlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `playlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT für Tabelle `my_series`
@@ -150,7 +166,7 @@ ALTER TABLE `my_series`
 -- AUTO_INCREMENT für Tabelle `user_accounts`
 --
 ALTER TABLE `user_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints der exportierten Tabellen
