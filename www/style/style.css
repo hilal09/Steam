@@ -142,6 +142,11 @@ h2 {
     border-bottom: 2px solid #fff;
 }
 
+.navbar ul li a i {
+    margin-right: 5px;
+    font-size: 16px;
+}
+
 /* Start of Profile css */
 .profile-container {
     display: flex;
