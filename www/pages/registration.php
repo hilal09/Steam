@@ -20,7 +20,7 @@
             <label>Name</label>
             <input type="text" name="name" placeholder="Name">
             <label>E-Mail Address</label>
-            <input type="text" name="email" placeholder="Email Address">
+            <input type="text" name="email" placeholder="E-Mail Address">
             <label>Password</label>
             <input type="password" name="password" placeholder="Password">
             <p class="register-link">Already Signed Up? <a href="index.php">Click here to Log In.</a></p>
