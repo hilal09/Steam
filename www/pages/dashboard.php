@@ -32,16 +32,16 @@ if (!isset($_SESSION['user_id'])) {
             </div>
     </div>
 
-    <div class="want-to-watch">
-            <p>Want to Watch</p>
+    <div class="wishlist">
+            <p>Wishlist</p>
             <a href="add_series.php" class="add-series-button">+</a>
             <div class="playlist-content">
                 <!-- serien hinzufügen, die man schauen möchte -->
             </div>
         </div>
 
-    <div class="already-watched">
-        <p>Already Watched</p>
+    <div class="watched">
+        <p>Watched</p>
         <a href="add_series.php" class="add-series-button">+</a>
         <div class="playlist-content">
             <!-- serien hinzufügen, die man schon geschaut hat -->

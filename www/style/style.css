@@ -488,7 +488,7 @@ h3 {
     position: relative;
 }
 
-.want-to-watch {
+.wishlist {
     color: white;
     text-align: left;
     margin-top: 30px;
@@ -497,7 +497,7 @@ h3 {
     position: relative;
 }
 
-.already-watched {
+.watched {
     color: white;
     text-align: left;
     margin-top: 30px;
