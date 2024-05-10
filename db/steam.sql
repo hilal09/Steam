@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 09. Mai 2024 um 21:15
+-- Erstellungszeit: 10. Mai 2024 um 17:04
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -49,7 +49,7 @@ INSERT INTO `default_series` (`id`, `title`, `year`, `seasons`, `genre`, `platfo
 (5, 'Game of Thrones', 2011, 8, 'Action', 'HBO', '../uploads/default_series/GameofThrones.jpg'),
 (6, 'The Mandalorian', 2019, 2, 'Sci-fi', 'Disney+', '../uploads/default_series/TheMandalorian.jpg'),
 (7, 'The Haunting of Hill House', 2018, 2, 'Horror', 'Netflix', '../uploads/default_series/TheHauntingofHillHouse.jpg'),
-(8, 'The Handmaid\'s Tale', 2017, 4, 'Drama', 'Hulu', '../uploads/default_series/TheHandmaidsTale.jpg'),
+(8, 'The Handmaid`s Tale', 2017, 4, 'Drama', 'Hulu', '../uploads/default_series/TheHandmaidsTale.jpg'),
 (9, 'The Witcher', 2019, 2, 'Fantasy', 'Netflix', '../uploads/default_series/TheWitcher.jpg'),
 (10, 'Westworld', 2016, 3, 'Sci-fi', 'HBO', '../uploads/default_series/Westworld.jpg'),
 (11, 'Brooklyn Nine-Nine', 2013, 8, 'Comedy', 'NBC', '../uploads/default_series/BrooklynNineNine.jpg'),
@@ -91,7 +91,6 @@ INSERT INTO `my_playlists` (`playlist_id`, `user_id`, `playlist_name`) VALUES
 CREATE TABLE `my_series` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `series_id` int(11) DEFAULT NULL,
   `playlist_id` int(11) DEFAULT NULL,
   `title` varchar(40) NOT NULL,
   `year` int(4) NOT NULL,
@@ -140,7 +139,6 @@ ALTER TABLE `my_playlists`
 ALTER TABLE `my_series`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `series_id` (`series_id`),
   ADD KEY `playlist_id` (`playlist_id`);
 
 --
