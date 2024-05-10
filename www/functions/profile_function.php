@@ -23,8 +23,10 @@ if (isset($_POST['delete-account'])) {
         $stmt->bind_param("i", $userId);
         $stmt->execute();
 
+        session_destroy();
+
         $conn->commit();
-        header('Location: ../pages/registration.php'); 
+        header('Location: ../pages/index.php'); 
         exit;
     } catch (Exception $e) {
         $conn->rollback();
