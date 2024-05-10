@@ -20,6 +20,10 @@ if (!isset($_SESSION['user_id'])) {
     <?php include "../functions/navigation.php"; ?>
     <?php include "../functions/logo.php"; ?>
 
+    <div>
+        <h3>Hello, <?php echo $_SESSION['name']; ?>!</h3>
+    </div>
+
     <div class="currently-watching">
         <p>Currently Watching</p>
         <a href="add_series.php" class="add-series-button">+</a>

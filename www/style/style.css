@@ -59,10 +59,10 @@ body {
     padding: 10px;
     border: none;
     border-radius: 10px;
-    background-color: #0011ff;
+    background-color: rgba(0, 0, 0, 0.3);
     cursor: pointer;
     display: block;
-    margin: 0 auto;
+    margin: 20px auto 0;
 }
 
 .error {
@@ -84,18 +84,26 @@ h1 {
     z-index: 2;
 }
 
-/* responsive */
+/* responsive design */
 @media (max-width: 768px) {
     h1 {
         font-size: 24px;
         top: 40px;
     }
 }
+/* responsive design */
 
 h2 {
     font-family: "Space Mono", sans-serif;
     text-align: center;
     margin-left: 20px;
+}
+
+h3 {
+    font-family: "Space Mono", sans-serif;
+    text-align: center;
+    margin-left: 20px;
+    font-size: 30px;
 }
 
 /* logo style */
@@ -474,7 +482,7 @@ h2 {
 .currently-watching {
     color: white;
     text-align: left;
-    margin-top: 150px;
+    margin-top: 50px;
     padding: 20px;
     font-size: 20px;
     position: relative;
@@ -483,7 +491,7 @@ h2 {
 .want-to-watch {
     color: white;
     text-align: left;
-    margin-top: 100px;
+    margin-top: 30px;
     padding: 20px;
     font-size: 20px;
     position: relative;
@@ -492,7 +500,7 @@ h2 {
 .already-watched {
     color: white;
     text-align: left;
-    margin-top: 100px;
+    margin-top: 30px;
     padding: 20px;
     font-size: 20px;
     position: relative;
@@ -513,6 +521,7 @@ h2 {
     justify-content: center;
     text-align: center;
     text-decoration: none;
+    margin-top: 20px;
 }
 
 /* style of playlists on dashboard */
