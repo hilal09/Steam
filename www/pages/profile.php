@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
 
 </head>
 <body>
-    <?php include "../functions/navigation.php"; ?>
+    <?php include "../widgets/navigation.php"; ?>
     <div class="profile-container">
         <aside class="profile-sidebar">
             <div class="profile-user-card">

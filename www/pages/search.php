@@ -49,8 +49,8 @@ if (!isset($_SESSION['user_id'])) {
     </script>
 </head>
 <body>
-    <?php include "../functions/navigation.php"; ?>
-    <?php include "../functions/logo.php"; ?>
+    <?php include "../widgets/navigation.php"; ?>
+    <?php include "../widgets/logo.php"; ?>
     
     <div class="search-container">
         <div class="search-form">
