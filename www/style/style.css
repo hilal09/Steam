@@ -10,12 +10,12 @@
 body {
     background-image: url("background.png");
     background-attachment: fixed;
-    background-size: cover; /* Make the background image cover the entire element */
-    background-repeat: no-repeat; /* Prevent the background image from repeating */
-    background-position: center; /* Center the background image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
 }
 
-/* Styles within the .register_login class */
+/* beginning of styles in.register_login class */
 
 .register_login * {
     font-optical-sizing: auto;
@@ -25,19 +25,17 @@ body {
 }
 
 .register_login form {
-    background-color: rgba(255, 255, 255, 0.09); /* Set background color with transparency */
+    background-color: rgba(255, 255, 255, 0.09);
     padding: 20px;
     border-radius: 15px;
     text-align: center;
-    /* Center vertically */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    /* Center horizontally */
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%; /* Adjust width as needed */
-    max-width: 400px; /* Set max-width to prevent the form from taking up the whole page */
+    width: 80%;
+    max-width: 400px;
 }
 
 .register_login form label {
@@ -47,24 +45,24 @@ body {
 
 .register_login form input[type="text"],
 .register_login form input[type="password"] {
-    width: calc(100% - 50px); /* Adjust width as needed */
+    width: calc(100% - 50px);
     padding: 10px;
-    margin: 0 auto 15px; /* Center horizontally */
+    margin: 0 auto 15px;
     display: block;
-    border: 1.5px solid white; /* Set border color */
-    border-radius: 10px; /* Set border radius */
-    background-color: transparent; /* Set background to transparent */
+    border: 1.5px solid white;
+    border-radius: 10px;
+    background-color: transparent;
 }
 
 .register_login form button {
-    width: calc(100% - 20px); /* Adjust width as needed */
+    width: calc(100% - 20px);
     padding: 10px;
     border: none;
     border-radius: 10px;
-    background-color: #0011ff; /* Set your desired button color */
+    background-color: rgba(0, 0, 0, 0.3);
     cursor: pointer;
     display: block;
-    margin: 0 auto; /* Center horizontally */
+    margin: 20px auto 0;
 }
 
 .error {
@@ -72,31 +70,43 @@ body {
     margin-top: 10px;
 }
 
+/* end of styles in.register_login class */
+
 h1 {
     font-family: "Space Mono", sans-serif;
     font-size: 40px;
     color: white;
     text-align: center;
-    position: absolute; /* Position the header */
-    top: 10%; /* Adjust top position */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center horizontally */
-    z-index: 2; /* Ensure the header is on top */
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
 }
 
-/* Media query for smaller devices */
+/* responsive design */
 @media (max-width: 768px) {
     h1 {
-        font-size: 24px; /* Adjust font size for smaller devices */
-        top: 40px; /* Adjust top position for smaller devices */
+        font-size: 24px;
+        top: 40px;
     }
 }
+/* responsive design */
 
 h2 {
     font-family: "Space Mono", sans-serif;
     text-align: center;
     margin-left: 20px;
 }
+
+h3 {
+    font-family: "Space Mono", sans-serif;
+    text-align: center;
+    margin-left: 20px;
+    font-size: 30px;
+}
+
+/* logo style */
 
 .logo {
     margin-left: 20px;
@@ -105,10 +115,13 @@ h2 {
 }
 
 .tm {
-    font-size: 0.4em; /* Ändere die Größe nach Bedarf */
-    vertical-align: top; /* Ausrichtung des Handelszeichen-Symbols anpassen */
+    font-size: 0.4em;
+    vertical-align: top;
 }
 
+/* logo style */
+
+/* beginning of styles for the navigation bar */
 
 .navbar {
     display: flex;
@@ -150,7 +163,10 @@ h2 {
     font-size: 16px;
 }
 
-/* Start of Profile css */
+/* end of styles for the navigation bar */
+
+/* beginning of styles for profile page css */
+
 .profile-container {
     display: flex;
     min-height: 100vh;
@@ -240,7 +256,7 @@ h2 {
 .account-profile-picture .profile-picture {
     width: 100px; 
     height: 100px; 
-    border-radius: 50%; /* Circular image */
+    border-radius: 50%;
 }
 
 .change-photo-button {
@@ -265,7 +281,7 @@ h2 {
 
 .account-form {
     display: flex;
-    flex-direction: column; /* Stack the form items vertically */
+    flex-direction: column;
     padding: 0 20px;
 }
 
@@ -304,34 +320,31 @@ h2 {
     background-color: #0056b3; 
 }
 
-/* Profile - Icons */
+/* icons for profile */
 .icon {
     margin-right: 8px;
 }
 
 .icon-user:before {
-    content: '\f007'; /* FontAwesome User icon unicode */
+    content: '\f007';
 }
 
 .icon-cog:before {
-    content: '\f013'; /* FontAwesome Cog icon unicode */
+    content: '\f013';
 }
 
 .icon-sign-out:before {
-    content: '\f08b'; /* FontAwesome Sign-out icon unicode */
+    content: '\f08b';
 }
 
-/* Active state styles */
 .profile-navigation a.active {
     font-weight: bold;
-    /* Other styles for the active state */
 }
 
 .active-section {
-    display: block; /* Shows the active section */
+    display: block;
 }
 
-/* Initially hide all sections, then show the active one */
 .profile-main section {
     display: none;
 }
@@ -393,11 +406,11 @@ h2 {
   }
 
   .profile-content {
-    display: none; /* Hides all sections by default */
+    display: none;
   }
   
   .profile-content.active {
-    display: block; /* Active section */
+    display: block;
   }
 
   ul {
@@ -462,30 +475,32 @@ h2 {
     z-index: -1;
   }
 
-  /* End of Profile css*/
+/* end of profile page style */
 
-  .currently-watching {
+/* style of playlists on dashboard */
+
+.currently-watching {
     color: white;
     text-align: left;
-    margin-top: 150px;
+    margin-top: 50px;
     padding: 20px;
     font-size: 20px;
     position: relative;
 }
 
-.want-to-watch {
+.wishlist {
     color: white;
     text-align: left;
-    margin-top: 100px;
+    margin-top: 30px;
     padding: 20px;
     font-size: 20px;
     position: relative;
 }
 
-.already-watched {
+.watched {
     color: white;
     text-align: left;
-    margin-top: 100px;
+    margin-top: 30px;
     padding: 20px;
     font-size: 20px;
     position: relative;
@@ -506,7 +521,12 @@ h2 {
     justify-content: center;
     text-align: center;
     text-decoration: none;
+    margin-top: 20px;
 }
+
+/* style of playlists on dashboard */
+
+/* beginning of styles for search page */
 
 .search-container {
     width: 400px;
@@ -521,36 +541,36 @@ h2 {
 }
 
 .search-form {
-    display: flex; /* Flex-Container erstellen */
-    align-items: center; /* Vertikal zentrieren */
-    margin-bottom: 9px; /* Abstand unter der Suchleiste */
-    margin-left: 35px; /* Abstand von links */
+    display: flex;
+    align-items: center;
+    margin-bottom: 9px;
+    margin-left: 35px;
     margin-right: 15px;
-    position: relative; /* Position relativ setzen */
+    position: relative;
 }
 
 .search-form input[type="text"] {
-    width: 250px; /* Breite anpassen */
+    width: 250px;
     padding: 10px;
-    margin: 0 auto 15px; /* Zentrieren und Abstand unten hinzufügen */
+    margin: 0 auto 15px;
     display: block;
-    border: 1.5px solid white; /* Weißer Rahmen */
+    border: 1.5px solid white;
     border-radius: 10px;
-    background-color: transparent; /* Transparenter Hintergrund */
+    background-color: transparent;
 }
 
 .filter-options {
     display: flex;
-    justify-content: center; /* Platzieren Sie die Elemente gleichmäßig im Container */
+    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     margin-left: 15px;
 }
 
 .filter-options select {
-    flex: 2; /* Alle Filteroptionen nehmen gleich viel Platz ein */
+    flex: 2; /* damit alle filteroptionen gleich viel platz einnehmen */
     padding: 10px;
-    margin-right: 10px; /* Fügen Sie einen kleinen Abstand zwischen den Optionen hinzu */
+    margin-right: 10px;
     border: 1.5px solid white;
     border-radius: 10px;
     background-color: transparent;
@@ -563,41 +583,41 @@ h2 {
 }
 
 .search-form button {
-    width: 50px; /* Breite des Such-Buttons */
+    width: 50px;
     padding: 10px;
     border: none;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.3); /* Blaue Hintergrundfarbe */
+    background-color: rgba(0, 0, 0, 0.3); 
     cursor: pointer;
-    margin-left: 5px; /* Abstand zwischen Suchleiste und Button */
+    margin-left: 5px;
     margin-right: 15px;
-    color: white; /* Weiße Schriftfarbe */
-    position: absolute; /* Position absolut setzen */
-    right: 0; /* Rechts ausrichten */
-    top: 0; /* Oben ausrichten */
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .filter-options button {
-    width: calc(100% - 50px); /* Breite anpassen */
+    width: calc(100% - 50px);
     padding: 10px;
-    margin: 0 auto 15px; /* Zentrieren und Abstand unten hinzufügen */
+    margin: 0 auto 15px;
     display: block;
-    border: 1.5px solid white; /* Weißer Rahmen */
+    border: 1.5px solid white;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.3);
 }
 
 .search-results-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Vier Spalten */
-    gap: 20px; /* Abstand zwischen den Suchergebnissen */
-    justify-content: center; /* Zentriert die Suchergebnisse horizontal */
+    grid-template-columns: repeat(4, 1fr); /* suchergebnisse in 4 spalten anzeigen */
+    gap: 20px; /* abstand zwischen suchergebnissen */
+    justify-content: center;
     padding: 20px;
     border-radius: 10px;
 }
 
 .search-result {
-    width: 100%; /* Jedes Suchergebnis nimmt die gesamte Breite der Spalte ein */
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -605,14 +625,17 @@ h2 {
     box-sizing: border-box;
 }
 
+/* responsive design */
 @media only screen and (max-width: 768px) {
     .search-results-container {
-        grid-template-columns: repeat(2, 1fr); /* Bei kleineren Bildschirmen zwei Spalten */
+        grid-template-columns: repeat(2, 1fr); /* wenn bildschirm klein ist, dann zwei spalten */
     }
 }
 
 @media only screen and (max-width: 480px) {
     .search-results-container {
-        grid-template-columns: 1fr; /* Bei noch kleineren Bildschirmen eine Spalte */
+        grid-template-columns: 1fr; /* wenn bildschirm richtig klein ist, dann nur eine spalte */
     }
 }
+
+/* end of styles for search page */

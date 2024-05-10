@@ -1,15 +1,12 @@
 <?php
-session_start(); // Add session_start() at the beginning
-
-// Check if the user is logged in
+session_start();
 if (!isset($_SESSION['user_id'])) {
-    // Redirect the user to the login page if not logged in
     header("Location: ../pages/index.php");
     exit();
 }
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +20,10 @@ if (!isset($_SESSION['user_id'])) {
     <?php include "../functions/navigation.php"; ?>
     <?php include "../functions/logo.php"; ?>
 
+    <div>
+        <h3>Hello, <?php echo $_SESSION['name']; ?>!</h3>
+    </div>
+
     <div class="currently-watching">
         <p>Currently Watching</p>
         <a href="add_series.php" class="add-series-button">+</a>
@@ -31,19 +32,19 @@ if (!isset($_SESSION['user_id'])) {
             </div>
     </div>
 
-    <div class="want-to-watch">
-            <p>Want to Watch</p>
+    <div class="wishlist">
+            <p>Wishlist</p>
             <a href="add_series.php" class="add-series-button">+</a>
             <div class="playlist-content">
-                <!-- Hier können Serien hinzugefügt werden, die man schauen möchte -->
+                <!-- serien hinzufügen, die man schauen möchte -->
             </div>
         </div>
 
-    <div class="already-watched">
-        <p>Already Watched</p>
+    <div class="watched">
+        <p>Watched</p>
         <a href="add_series.php" class="add-series-button">+</a>
         <div class="playlist-content">
-            <!-- Hier können bereits geschauten Serien hinzugefügt werden -->
+            <!-- serien hinzufügen, die man schon geschaut hat -->
         </div>
     </div>
 

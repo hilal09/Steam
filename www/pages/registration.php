@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +13,14 @@
         <h1>Sign Up to Steam</h1>
 
         <form action="../functions/register.php" method="POST">
-            <!-- Damit Error angezeigt wird -->
+            <!-- damit error angezeigt wird -->
             <?php if (isset($_GET['error'])) { ?>
             <p class="error"><?php echo $_GET['error']; ?></p>
             <?php } ?>
             <label>Name</label>
             <input type="text" name="name" placeholder="Name">
             <label>E-Mail Address</label>
-            <input type="text" name="email" placeholder="Email Address">
+            <input type="text" name="email" placeholder="E-Mail Address">
             <label>Password</label>
             <input type="password" name="password" placeholder="Password">
             <p class="register-link">Already Signed Up? <a href="index.php">Click here to Log In.</a></p>

@@ -1,16 +1,13 @@
 <?php
-session_start(); // Add session_start() at the beginning
-
-// Check if the user is logged in
+session_start();
 if (!isset($_SESSION['user_id'])) {
-    // Redirect the user to the login page if not logged in
     header("Location: ../pages/index.php");
     exit();
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,7 +60,7 @@ if (!isset($_SESSION['user_id'])) {
       <input type="hidden" id="playlist_id" name="playlist_id" value="<?php echo $playlist_id; ?>">
       <!-- Weitere Formularfelder für die Serieninformationen -->
       <div class="form-group">
-        <label for="title">Titel:</label>
+        <label for="title">Title:</label>
         <input type="text" id="title" name="title" required>
         <div id="title-error" class="error">Bitte geben Sie einen Titel ein.</div>
       </div>

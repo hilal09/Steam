@@ -1,9 +1,6 @@
 <?php
-session_start(); // Add session_start() at the beginning
-
-// Check if the user is logged in
+session_start();
 if (!isset($_SESSION['user_id'])) {
-    // Redirect the user to the login page if not logged in
     header("Location: ../pages/index.php");
     exit();
 }
@@ -13,7 +10,7 @@ include "../functions/logo.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,9 +25,8 @@ include "../functions/logo.php";
         <h3>Meine Playlists:</h3>
         <ul>
             <?php
-            // Verbindung zur Datenbank herstellen und Benutzer-Playlists abrufen
-            // Annahme: $conn ist die Verbindungsvariable
-            $userId = $_SESSION['user_id']; // Angenommen, die Benutzer-ID ist in der Sitzungsvariable gespeichert
+            // verbindung zur datenbank herstellen, benutzer-playlists abrufen
+            $userId = $_SESSION['user_id'];
             $sql = "SELECT * FROM my_playlists WHERE user_id = $userId";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {

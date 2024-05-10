@@ -1,9 +1,6 @@
 <?php
-session_start(); // Add session_start() at the beginning
-
-// Check if the user is logged in
+session_start();
 if (isset($_SESSION['user_id'])) {
-    // Redirect the user to the dashboard page if logged in
     header("Location: ../pages/dashboard.php");
     exit();
 }
@@ -26,7 +23,7 @@ if (isset($_SESSION['user_id'])) {
                 <p class="error"><?php echo $_GET['error']; ?></p>
             <?php } ?>
             <label>E-Mail Address </label>
-            <input type="text" name="email" placeholder="Email Address">
+            <input type="text" name="email" placeholder="E-Mail Address">
             <label>Password</label>
             <input type="password" name="password" placeholder="Password">
 

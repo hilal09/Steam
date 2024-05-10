@@ -1,43 +1,38 @@
 <?php
-session_start(); // Add session_start() at the beginning
-
-// Check if the user is logged in
+session_start();
 if (!isset($_SESSION['user_id'])) {
-    // Redirect the user to the login page if not logged in
     header("Location: ../pages/index.php");
     exit();
 }
 
-// Database connection
+// datenbank verbindung
 $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "steam";
 
-// Create connection
+// verbindung herstellen
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-// Check connection
+// verbindung überprüfen
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Dummy search query, replace with actual search query based on form input
 $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
 $titleFilter = isset($_GET['title']) ? $_GET['title'] : 'all';
 $genreFilter = isset($_GET['genre']) ? $_GET['genre'] : 'all';
 $platformFilter = isset($_GET['platform']) ? $_GET['platform'] : 'all';
 
-// Construct the SQL query based on filters
-$sql = "SELECT * FROM default_series WHERE 1=1"; // 1=1 is used to simplify the SQL query construction
+$sql = "SELECT * FROM default_series WHERE 1=1";
 
 if ($searchQuery != '') {
-    // Add search query to the SQL statement
+    // search query zu sql statement
     $sql .= " AND title LIKE '$searchQuery%'";
 }
 
 if ($titleFilter != 'all') {
-    // Add title filter to the SQL statement
+    // title filter zum sql statement hinzufügen
     if ($titleFilter == 'a-j') {
         $sql .= " AND title >= 'A' AND title <= 'J'";
     } elseif ($titleFilter == 'k-t') {
@@ -48,18 +43,17 @@ if ($titleFilter != 'all') {
 }
 
 if ($genreFilter != 'all') {
-    // Add genre filter to the SQL statement
+    // genre filter
     $sql .= " AND genre = ?";
 }
 
 if ($platformFilter != 'all') {
-    // Add platform filter to the SQL statement
+    // platform filter
     $sql .= " AND platform = ?";
 }
 
 $stmt = mysqli_prepare($conn, $sql);
 if ($stmt) {
-    // Bind parameters
     $paramTypes = '';
     $paramValues = array();
     
@@ -77,12 +71,10 @@ if ($stmt) {
         mysqli_stmt_bind_param($stmt, $paramTypes, ...$paramValues);
     }
     
-    // Execute statement
     mysqli_stmt_execute($stmt);
-    // Get result set
+
     $result = mysqli_stmt_get_result($stmt);
 
-    // Output data of each row
     if (mysqli_num_rows($result) > 0) {
         echo "<div class='search-results-container'>";
         $count = 0;
@@ -101,6 +93,5 @@ if ($stmt) {
     echo "Error: " . mysqli_error($conn);
 }
 
-// Close connection
 mysqli_close($conn);
 ?>
