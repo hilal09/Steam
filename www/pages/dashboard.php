@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body>
     <?php include "../functions/navigation.php"; ?>
-    <?php include "../functions/logo.php"; ?>
+    <?php include "../widgets/logo.php"; ?>
 
     <div>
         <h3>Hello, <?php echo $_SESSION['name']; ?>!</h3>
