@@ -4,14 +4,31 @@ require 'db_connection.php';
 
 $userId = $_POST['userId']; 
 
-if (isset($_POST['delete-account'])){
-    $sql = "DELETE FROM user_accounts WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $userId);
-    
-    if ($stmt->execute()) {
-        header('Location: ../pages/registration.php');
+if (isset($_POST['delete-account'])) {
+    $conn->begin_transaction();
+
+    try {
+        $sql = "DELETE FROM my_playlists WHERE user_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+
+        $sql = "DELETE FROM my_series WHERE user_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+
+        $sql = "DELETE FROM user_accounts WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+
+        $conn->commit();
+        header('Location: ../pages/registration.php'); 
         exit;
+    } catch (Exception $e) {
+        $conn->rollback();
+        echo "Failed to delete account: " . $e->getMessage();
     }
 }
 
@@ -45,7 +62,6 @@ if ($stmt->execute()) {
     header('Location: ../pages/profile.php');
     exit;
 } else {
-    // Handle update failure
     echo "Update failed: " . $conn->error;
 }
 
