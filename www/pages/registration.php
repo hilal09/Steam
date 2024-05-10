@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
         <h1>Sign Up to Steam</h1>
 
         <form action="../functions/register.php" method="POST">
-            <!-- Damit Error angezeigt wird -->
+            <!-- damit error angezeigt wird -->
             <?php if (isset($_GET['error'])) { ?>
             <p class="error"><?php echo $_GET['error']; ?></p>
             <?php } ?>

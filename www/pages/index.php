@@ -1,9 +1,6 @@
 <?php
-session_start(); // Add session_start() at the beginning
-
-// Check if the user is logged in
+session_start();
 if (isset($_SESSION['user_id'])) {
-    // Redirect the user to the dashboard page if logged in
     header("Location: ../pages/dashboard.php");
     exit();
 }

@@ -1,15 +1,12 @@
 <?php
-session_start(); // Add session_start() at the beginning
-
-// Check if the user is logged in
+session_start();
 if (!isset($_SESSION['user_id'])) {
-    // Redirect the user to the login page if not logged in
     header("Location: ../pages/index.php");
     exit();
 }
 ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +15,7 @@ if (!isset($_SESSION['user_id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script>
-        // AJAX-Funktion zum Laden der Suchergebnisse
+        // ajax = asynchronous javascript and xml, damit suchergebnisse nicht auf einer neuen seite geladen werden
         function loadSearchResults(query, titleFilter, genreFilter, platformFilter) {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
@@ -32,13 +29,11 @@ if (!isset($_SESSION['user_id'])) {
             xhr.send();
         }
 
-        // Laden Sie beim Seitenaufruf alle Serien
         window.onload = function() {
             loadSearchResults("", "all", "all", "all");
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            // Behandeln Sie das Formular-Absenden mit AJAX
             var searchForm = document.querySelector('.search-form form');
             if (searchForm) {
                 searchForm.addEventListener('submit', function(event) {
@@ -102,7 +97,7 @@ if (!isset($_SESSION['user_id'])) {
             </form>
         </div>
         
-        <!-- Hier werden die Suchergebnisse angezeigt -->
+        <!-- suchergebnisse hier -->
         <div id="search-results" class="search-results-container"></div>
         
     </div>
