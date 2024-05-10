@@ -32,10 +32,8 @@ Steam^tm is a web application designed to help users track their watched series.
 - Go to www/functions/db_connection.php
 
 ## Contributors 
-- **Zeinab Barakat:**
-- **Hilal Cubukcu:** Database, Login, Registration
-- **Melisa Rosic Emira:**
-- **Yudum Yilmaz:**
+- **Barakat, Zeinab,**
+- **Cubukcu, Hilal, 1715678:** Database, Login, Registration
+- **Emira, Melisa Rosic:**
+- **Yilmaz, Yudum,:**
 - **Everyone:** Design
-
-## License
