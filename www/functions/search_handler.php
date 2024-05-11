@@ -5,19 +5,8 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// datenbankverbindung
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "steam";
-
-// verbindung herstellen
-$conn = mysqli_connect($servername, $username, $password, $database);
-
-// verbindung überprüfen
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// Include the database connection
+include "../functions/db_connection.php";
 
 $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
 $titleFilter = isset($_GET['title']) ? $_GET['title'] : 'title';
