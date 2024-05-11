@@ -20,9 +20,9 @@ if (!$conn) {
 }
 
 $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
-$titleFilter = isset($_GET['title']) ? $_GET['title'] : 'all';
-$genreFilter = isset($_GET['genre']) ? $_GET['genre'] : 'all';
-$platformFilter = isset($_GET['platform']) ? $_GET['platform'] : 'all';
+$titleFilter = isset($_GET['title']) ? $_GET['title'] : 'title';
+$genreFilter = isset($_GET['genre']) ? $_GET['genre'] : 'genre';
+$platformFilter = isset($_GET['platform']) ? $_GET['platform'] : 'platform';
 
 $sql = "SELECT * FROM default_series WHERE 1=1";
 
@@ -31,7 +31,7 @@ if ($searchQuery != '') {
     $sql .= " AND (title LIKE '%$searchQuery%' OR genre LIKE '%$searchQuery%' OR platform LIKE '%$searchQuery%')";
 }
 
-if ($titleFilter != 'all') {
+if ($titleFilter != 'title') {
     // titelfilter zur SQL-anweisung hinzufügen
     if ($titleFilter == 'a-j') {
         $sql .= " AND title >= 'A' AND title <= 'J'";
@@ -42,12 +42,12 @@ if ($titleFilter != 'all') {
     }
 }
 
-if ($genreFilter != 'all') {
+if ($genreFilter != 'genre') {
     // genre-filter
     $sql .= " AND genre = ?";
 }
 
-if ($platformFilter != 'all') {
+if ($platformFilter != 'platform') {
     // plattform-filter
     $sql .= " AND platform = ?";
 }
@@ -57,12 +57,12 @@ if ($stmt) {
     $paramTypes = '';
     $paramValues = array();
     
-    if ($genreFilter != 'all') {
+    if ($genreFilter != 'genre') {
         $paramTypes .= 's';
         $paramValues[] = $genreFilter;
     }
     
-    if ($platformFilter != 'all') {
+    if ($platformFilter != 'platform') {
         $paramTypes .= 's';
         $paramValues[] = $platformFilter;
     }

@@ -63,16 +63,14 @@ if (!isset($_SESSION['user_id'])) {
         <div class="filter-options">
             <form action="../functions/search_handler.php" method="GET">
                 <select name="title">
-                    <option value="" disabled selected>Title</option>
-                    <option value="all">All</option>
+                    <option value="title">Title</option>
                     <option value="a-j">A-J</option>
                     <option value="k-t">K-T</option>
                     <option value="u-z">U-Z</option>
                 </select>
 
                 <select name="genre">
-                    <option value="" disabled selected>Genre</option>
-                    <option value="all">All</option>
+                    <option value="genre">Genre</option>
                     <option value="action">Action</option>
                     <option value="animation">Animation</option>
                     <option value="comedy">Comedy</option>
@@ -84,8 +82,7 @@ if (!isset($_SESSION['user_id'])) {
                 </select>
 
                 <select name="platform">
-                    <option value="" disabled selected>Platform</option>
-                    <option value="all">All</option>
+                    <option value="platform">Platform</option>
                     <option value="amazon prime">Amazon Prime</option>
                     <option value="hbo">HBO</option>
                     <option value="hbo max">HBO Max</option>
