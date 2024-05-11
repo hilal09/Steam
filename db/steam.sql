@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 10. Mai 2024 um 17:04
+-- Erstellungszeit: 11. Mai 2024 um 19:37
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -61,37 +61,12 @@ INSERT INTO `default_series` (`id`, `title`, `year`, `seasons`, `genre`, `platfo
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `my_playlists`
---
-
-CREATE TABLE `my_playlists` (
-  `playlist_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `playlist_name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Daten für Tabelle `my_playlists`
---
-
-INSERT INTO `my_playlists` (`playlist_id`, `user_id`, `playlist_name`) VALUES
-(4, 6, 'Watched'),
-(5, 6, 'Currently watching'),
-(6, 6, 'Wishlist'),
-(7, 7, 'Watched'),
-(8, 7, 'Currently watching'),
-(9, 7, 'Wishlist');
-
--- --------------------------------------------------------
-
---
 -- Tabellenstruktur für Tabelle `my_series`
 --
 
 CREATE TABLE `my_series` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `playlist_id` int(11) DEFAULT NULL,
   `title` varchar(40) NOT NULL,
   `year` int(4) NOT NULL,
   `seasons` int(11) DEFAULT NULL,
@@ -115,31 +90,15 @@ CREATE TABLE `user_accounts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Daten für Tabelle `user_accounts`
---
-
-INSERT INTO `user_accounts` (`id`, `name`, `email`, `password`, `avatar`) VALUES
-(6, 'Hilal', 'hallo@hallo.de', '$2y$10$ASdlVFyzB2cm0n7kNN4am.SKeMIPDxK5xSv0/2aqWW0tO.dOoYgJS', NULL),
-(7, 'Hilal', 'h.cub@web.de', '$2y$10$wFkYt3Gd1iqwWqJ4YA5UiecOLg5Z2vtJTo8LkqnxlW.ne4GX0mCkO', NULL);
-
---
 -- Indizes der exportierten Tabellen
 --
-
---
--- Indizes für die Tabelle `my_playlists`
---
-ALTER TABLE `my_playlists`
-  ADD PRIMARY KEY (`playlist_id`),
-  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indizes für die Tabelle `my_series`
 --
 ALTER TABLE `my_series`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `playlist_id` (`playlist_id`);
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indizes für die Tabelle `user_accounts`
@@ -153,39 +112,26 @@ ALTER TABLE `user_accounts`
 --
 
 --
--- AUTO_INCREMENT für Tabelle `my_playlists`
---
-ALTER TABLE `my_playlists`
-  MODIFY `playlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- AUTO_INCREMENT für Tabelle `my_series`
 --
 ALTER TABLE `my_series`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT für Tabelle `user_accounts`
 --
 ALTER TABLE `user_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints der exportierten Tabellen
 --
 
 --
--- Constraints der Tabelle `my_playlists`
---
-ALTER TABLE `my_playlists`
-  ADD CONSTRAINT `my_playlists_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_accounts` (`id`);
-
---
 -- Constraints der Tabelle `my_series`
 --
 ALTER TABLE `my_series`
-  ADD CONSTRAINT `my_series_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_accounts` (`id`),
-  ADD CONSTRAINT `my_series_ibfk_3` FOREIGN KEY (`playlist_id`) REFERENCES `my_playlists` (`playlist_id`);
+  ADD CONSTRAINT `my_series_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_accounts` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -42,14 +42,6 @@ $stmt->execute();
 if ($stmt->affected_rows > 0) {
     $user_id = $stmt->insert_id;
 
-    $playlist_names = array("Watched", "Currently watching", "Wishlist");
-    foreach ($playlist_names as $playlist_name) {
-        $sql = "INSERT INTO my_playlists (user_id, playlist_name) VALUES (?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("is", $user_id, $playlist_name);
-        $stmt->execute();
-    }
-
     header("Location: ../pages/dashboard.php");
     exit();
 } else {
