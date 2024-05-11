@@ -1,3 +1,11 @@
+<?php
+/**
+ * Author: Hilal Cubukcu
+ * Title: Sign Up Page
+ * Summary: This page allows users to sign up for a new account on Steam. If there's any error during registration, it will be displayed to the user.
+ */
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,22 +18,22 @@
 
 </head>
 <body class="register_login">
-        <h1>Sign Up to Steam</h1>
+    <h1>Sign Up to Steam</h1>
 
-        <form action="../functions/register.php" method="POST">
-            <!-- damit error angezeigt wird -->
-            <?php if (isset($_GET['error'])) { ?>
+    <form action="../functions/register.php" method="POST">
+        <!-- To display error -->
+        <?php if (isset($_GET['error'])) { ?>
             <p class="error"><?php echo $_GET['error']; ?></p>
-            <?php } ?>
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Name">
-            <label>E-Mail Address</label>
-            <input type="text" name="email" placeholder="E-Mail Address">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="Password">
-            <p class="register-link">Already Signed Up? <a href="index.php">Click here to Log In.</a></p>
+        <?php } ?>
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Name">
+        <label>E-Mail Address</label>
+        <input type="text" name="email" placeholder="E-Mail Address">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Password">
+        <p class="register-link">Already Signed Up? <a href="index.php">Click here to Log In.</a></p>
 
-            <button type="submit">Sign Up</button>
-        </form>
-    </body>
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
 </html>

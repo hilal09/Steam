@@ -1,4 +1,10 @@
 <?php
+/**
+ * Author: Zeinab Barakat, Hilal Cubukcu(get series)
+ * Title: Dashboard Page 
+ * Summary: This page displays the dashboard for logged-in users. It retrieves series data for the current user and allows users to add new series.
+ */
+
 session_start(); // Start the session
 
 // Check if the user is logged in

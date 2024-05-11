@@ -1,4 +1,10 @@
 <?php
+/**
+ * Author: Hilal Cubukcu
+ * Title: User Authentication
+ * Summary: This script handles user authentication for Steam. It verifies the user's credentials against the database and sets session variables upon successful login.
+ */
+
 include "db_connection.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -13,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepare and execute SQL statement with prepared statements
     $stmt = $conn->prepare("SELECT * FROM user_accounts WHERE email = ?");
-    $stmt->bind_param("s", $email); //s bedeutet, dass die Email ein String ist
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 

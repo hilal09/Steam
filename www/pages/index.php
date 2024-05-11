@@ -1,4 +1,10 @@
 <?php
+/**
+ * Author: Hilal Cubukcu
+ * Title: Login Page
+ * Summary: This page allows users to sign in to their Steam account. If the user is already logged in, they are redirected to the dashboard page.
+ */
+
 session_start();
 if (isset($_SESSION['user_id'])) {
     header("Location: ../pages/dashboard.php");
