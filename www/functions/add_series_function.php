@@ -1,6 +1,6 @@
 <?php
 /**
- * Author: Hilal Cubukcu
+ * Author: Hilal Cubukcu & Zeinab Barakat
  * Title: Add Series Page
  * Summary: This page allows logged-in users to add a new series to their collection. It processes the form data and inserts the series into the database.
  */
