@@ -155,7 +155,7 @@ $user_id = $_SESSION['user_id'];
 </head>
 <body>
 
-    <?php include "../functions/navigation.php"; ?>
+    <?php include "../widgets/navigation.php"; ?>
     <?php include "../widgets/logo.php"; ?>
 
 
