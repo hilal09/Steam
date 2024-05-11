@@ -30,7 +30,7 @@ if (!isset($_SESSION['user_id'])) {
         }
 
         window.onload = function() {
-            loadSearchResults("", "all", "all", "all");
+            loadSearchResults("", "title", "genre", "platform");
         }
 
         document.addEventListener("DOMContentLoaded", function() {
@@ -73,6 +73,7 @@ if (!isset($_SESSION['user_id'])) {
                     <option value="genre">Genre</option>
                     <option value="action">Action</option>
                     <option value="animation">Animation</option>
+                    <option value="adult-swim">Adult Swim</option>
                     <option value="comedy">Comedy</option>
                     <option value="drama">Drama</option>
                     <option value="fantasy">Fantasy</option>
@@ -89,7 +90,7 @@ if (!isset($_SESSION['user_id'])) {
                     <option value="hulu">Hulu</option>
                     <option value="netflix">Netflix</option>
                     <option value="nbc">NBC</option>
-                    <option value="rtl+">RTL+</option>
+                    <option value="rtl+">Disney+</option>
                 </select>
             </form>
         </div>

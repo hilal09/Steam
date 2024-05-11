@@ -23,12 +23,16 @@ $searchQuery = isset($_GET['query']) ? $_GET['query'] : '';
 $titleFilter = isset($_GET['title']) ? $_GET['title'] : 'title';
 $genreFilter = isset($_GET['genre']) ? $_GET['genre'] : 'genre';
 $platformFilter = isset($_GET['platform']) ? $_GET['platform'] : 'platform';
+$paramTypes = '';
+$paramValues = array();
 
 $sql = "SELECT * FROM default_series WHERE 1=1";
 
 if ($searchQuery != '') {
     // suchanfrage zur SQL-anweisung hinzufügen
-    $sql .= " AND (title LIKE '%$searchQuery%' OR genre LIKE '%$searchQuery%' OR platform LIKE '%$searchQuery%')";
+    $sql .= " AND title LIKE '%$searchQuery%'";
+} else {
+    $titleFilter = 'title';
 }
 
 if ($titleFilter != 'title') {
@@ -45,11 +49,15 @@ if ($titleFilter != 'title') {
 if ($genreFilter != 'genre') {
     // genre-filter
     $sql .= " AND genre = ?";
+    $paramTypes .= 's';
+    $paramValues[] = $genreFilter;
 }
 
 if ($platformFilter != 'platform') {
     // plattform-filter
     $sql .= " AND platform = ?";
+    $paramTypes .= 's';
+    $paramValues[] = $platformFilter;
 }
 
 $stmt = mysqli_prepare($conn, $sql);
