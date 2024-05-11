@@ -28,7 +28,7 @@ $sql = "SELECT * FROM default_series WHERE 1=1";
 
 if ($searchQuery != '') {
     // search query zu sql statement
-    $sql .= " AND title LIKE '$searchQuery%'";
+    $sql = "SELECT *, COUNT(my_series.id) AS num_series FROM default_series LEFT JOIN my_series ON default_series.id = my_series.id WHERE 1=1";
 }
 
 if ($titleFilter != 'all') {
@@ -80,8 +80,10 @@ if ($stmt) {
         $count = 0;
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<div class='search-result'>";
+            echo "<img src='" . $row['picture_url'] . "' alt='" . $row['title'] . "'>";
             echo "<h2>" . $row['title'] . "</h2>";
             echo "<p><strong>Genre:</strong> " . $row['genre'] . "</p>";
+            echo "<p><strong>Seasons:</strong> " . $row['seasons'] . "</p>";
             echo "<p><strong>Platform:</strong> " . $row['platform'] . "</p>";
             echo "</div>";
         }
