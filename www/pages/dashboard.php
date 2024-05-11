@@ -1,5 +1,5 @@
 <?php
-session_start(); // Add session_start() at the beginning
+session_start(); // Start the session
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -13,6 +13,16 @@ include "../functions/db_connection.php";
 
 // Define the user ID
 $user_id = $_SESSION['user_id'];
+
+// Fetch series data for the current user
+$stmt = $conn->prepare("SELECT * FROM my_series WHERE user_id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Close the database connection
+$stmt->close();
+$conn->close();
 ?>
 
 
@@ -155,14 +165,34 @@ $user_id = $_SESSION['user_id'];
 </head>
 <body>
 
-    <?php include "../functions/navigation.php"; ?>
+    <?php include "../widgets/navigation.php"; ?>
     <?php include "../widgets/logo.php"; ?>
+
+    <div class="content">
+    <?php while ($row = $result->fetch_assoc()) { ?>
+        <!-- Start of series item -->
+        <div class="series-item">
+            <h3><?php echo $row['title']; ?></h3>
+            <p>Year: <?php echo $row['year']; ?></p>
+            <p>Seasons: <?php echo $row['seasons']; ?></p>
+            <p>Genre: <?php echo $row['genre']; ?></p>
+            <p>Platform: <?php echo $row['platform']; ?></p>
+            <!-- Display image if available -->
+            <?php if ($row['picture']) { ?>
+                <img src="data:image/jpg;base64,<?php echo base64_encode($row['picture']); ?>" alt="<?php echo $row['title']; ?>">
+            <?php } else { ?>
+                <p>No image available</p>
+            <?php } ?>
+        </div>
+        <!-- End of series item -->
+    <?php } ?>
+</div>
 
 
     <div class="popup">
         <button class="close-btn">&times;</button>
         <h2>Add Series</h2>
-        <form id="series-form" enctype="multipart/form-data">
+        <form id="series-form" enctype="multipart/form-data" action="../functions/add_series_function.php" method="POST">
             <label for="title">Title:</label>
             <input type="text" class="title" name="title" required>
 
@@ -209,6 +239,8 @@ $user_id = $_SESSION['user_id'];
             <button type="submit">Save</button>
         </form>
     </div>
+
+    
 
 <div class="content">
     <div class="currently-watching">
