@@ -85,19 +85,23 @@ $conn->close();
         }
 
         .popup form button[type="submit"] {
-            width: 50px;
-            position: absolute;
+            width: auto; /* Automatische Breite basierend auf dem Textinhalt */
+            padding: 8px 16px; /* Innenabstand für den Button */
             bottom: 5px;
             right: 10px;
-            height: 20px;
+            position: absolute; 
             background: #eee;
             color: #111;
             border: none;
             outline: none;
-            border-radius: 50%;
+            border-radius: 4px; /* Eckenradius für den rechteckigen Button */
             cursor: pointer;
+            transition: background-color 0.3s ease; /* Übergangseffekt für Hover */
         }
 
+        .popup form button[type="submit"]:hover {
+            background-color: #ddd; /* Hintergrundfarbe ändern, wenn der Mauszeiger über dem Button ist */
+        }
         .popup > * {
             margin: 15px 0px;
         }
@@ -160,19 +164,93 @@ $conn->close();
             text-decoration: none;
         }
 
-        .series-picture {
-            width: 150px; /* Match the width of the button */
-            height: 200px; /* Match the height of the button */
-            margin-left: 20px; /* Adjust as needed to create space between the button and the picture */
-            display: none; /* Hide the picture by default */
-        } 
+        /* Styling für das Dashboard */
+        .dashboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start; /* Den Container oben ausrichten */
+            gap: 20px;
+        }
 
+        .series-item {
+            position: relative; /* Position relativ für Hover-Effekt */
+            width: 150px; /* Breite für die Serie */
+            height: 200px; /* Höhe für die Serie */
+            overflow: hidden; /* Verhindert das Überlaufen von Inhalten */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Zeige Handcursor beim Hover an */
+            transition: transform 0.3s; /* Übergangseffekt für Hover */
+        }
+
+        .series-item:hover {
+            transform: scale(1.05); /* Vergrößere das Bild beim Hover */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Erhöhe den Schatten beim Hover */
+        }
+
+        .series-item img {
+            width: 100%; /* Bildbreite 100% des Elternelements */
+            height: 100%; /* Bildhöhe 100% des Elternelements */
+            object-fit: cover; /* Behalte das Seitenverhältnis bei und fülle das Element */
+            transition: opacity 0.3s; /* Übergangseffekt für Hover */
+        }
+
+        .series-item:hover img {
+            opacity: 0.5; /* Reduziere die Deckkraft des Bildes beim Hover */
+        }
+
+        .series-item-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7); /* Halbtransparenter Hintergrund */
+            padding: 5px;
+            color: white;
+            font-size: 12px;
+            opacity: 0; /* Standardmäßig unsichtbar */
+            transition: opacity 0.3s; /* Übergangseffekt für Hover */
+        }
+
+        .series-item:hover .series-item-info {
+            opacity: 1; /* Informationen anzeigen beim Hover */
+        }
+
+        .series-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
     </style>
 </head>
 <body>
 
     <?php include "../widgets/navigation.php"; ?>
     <?php include "../widgets/logo.php"; ?>
+
+    <div class="content">
+        <!-- Container für die Serien -->
+        <div class="dashboard-container">
+            <!-- Button zum Hinzufügen von Serien -->
+            <button class="open-popup">+</button>
+            
+            <div class="series-list">
+                <?php while ($row = $result->fetch_assoc()) { ?>
+                    <!-- Serie anzeigen -->
+                    <div class="series-item">
+                        <img src="data:image/jpg;base64,<?php echo base64_encode($row['picture']); ?>" alt="<?php echo $row['title']; ?>">
+                        <div class="series-item-info">
+                            <p><?php echo $row['title']; ?></p>
+                            <p>Year: <?php echo $row['year']; ?></p>
+                            <p>Seasons: <?php echo $row['seasons']; ?></p>
+                            <p>Genre: <?php echo $row['genre']; ?></p>
+                            <p>Platform: <?php echo $row['platform']; ?></p>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
 
     <div class="content">
     <?php while ($row = $result->fetch_assoc()) { ?>
@@ -245,39 +323,10 @@ $conn->close();
             <button type="submit">Save</button>
         </form>
     </div>
-
-    
-
-<div class="content">
-    <div class="currently-watching">
-        <p>Currently Watching</p>
-        <button class="open-popup" data-playlist-name="currently_watching">+</button>
-        <div class="playlist-content">
-            <!--was aktuell geschaut wird-->
-        </div>
-    </div>
-
-    <div class="wishlist">
-        <p>Wishlist</p>
-        <button class="open-popup" data-playlist-name="wishlist">+</button>
-        <div class="playlist-content">
-            <!-- Hier können Serien hinzugefügt werden, die man schauen möchte -->  
-        </div>
-    </div>
-
-    <div class="watched">
-        <p>Watched</p>
-        <button class="open-popup" data-playlist-name="watched">+</button>
-        <div class="playlist-content">
-            <!-- Hier können bereits geschauten Serien hinzugefügt werden -->
-
-        </div>
-    </div>
-
 </div>
 
-
 <script>
+
     document.querySelectorAll(".open-popup").forEach(function(button) {
         button.addEventListener("click", function(){
             document.body.classList.add("active-popup");
@@ -298,34 +347,6 @@ $conn->close();
                 console.error("Error:", error);
             });
 
-            fetch("../functions/get_series.php?playlist_name=" + playlistName)
-            .then(response => response.json())
-            .then(data => {
-                // Clear existing content in the playlist
-                const playlistContent = document.querySelector('.playlist-content');
-                playlistContent.innerHTML = '';
-
-                // Loop through the fetched series data and create HTML elements to display them
-                data.forEach(series => {
-                    // Create HTML elements to display series information
-                    const seriesItem = document.createElement('div');
-                    seriesItem.classList.add('series-item');
-                    seriesItem.innerHTML = `
-                        <img src="data:image/jpg;base64,${series.picture}" alt="${series.title}">
-                        <h3>${series.title}</h3>
-                        <p>Year: ${series.year}</p>
-                        <p>Seasons: ${series.seasons}</p>
-                        <p>Genre: ${series.genre}</p>
-                        <p>Platform: ${series.platform}</p>
-                    `;
-
-                    // Append series item to the playlist content
-                    playlistContent.appendChild(seriesItem);
-                });
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
 
         });
     });
@@ -351,6 +372,7 @@ $conn->close();
                 // If submission is successful, close the popup and reset the form
                 document.body.classList.remove("active-popup");
                 document.getElementById("series-form").reset(); // Reset the form
+                location.reload(); // Reload the page
                 // Optionally, you can reload the page or perform other actions
             } else {
                 // If submission fails, display an error message or perform other actions as needed
