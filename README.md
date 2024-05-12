@@ -10,8 +10,8 @@ Steam^tm is a web application designed to help users track their watched series.
 - **Login:** Registered users can log in using their email address and password.
 
 ### Series Management
-- **Add Series:** Users can add new series to their watchlist, providing details such as title, year, genre, platform, seasons, and a picture.
-- **Search Series:** Users can search for newly added series or search within the default library for available series.
+- **Add Series:** Users can add new series to their dashboard, providing details such as title, year, genre, platform, seasons, and a picture.
+- **Search Series:** Users can search for newly added series.
 
 ### Profile Management
 - **Profile Page:** Users have a profile page where they can view and update their personal information.
@@ -25,7 +25,7 @@ Steam^tm is a web application designed to help users track their watched series.
 ## Usage
 1. Register a new account or login with existing credentials.
 2. Navigate to the Dashboard to add new series.
-3. Explore the search page to discover new series or search within the default library. Add series from the default library to your libraries..
+3. Explore the search page to discover new series or search within your own series. Add series from the default library to your libraries..
 4. Visit the profile page to update your personal information and profile picture.
 
 ## Configure Database
