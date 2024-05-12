@@ -1,4 +1,11 @@
 <?php
+/**
+ * Author: Melisa Rosic Emira
+ * Last modified on: 12.05.2024
+ * Title: Profile Page
+ * Summary: This script fetches user data from the database for the profile page. Users can update their information (name, email and password) and choose an avatar, with an option to delete their account.
+ */
+
 session_start();
 require '../functions/db_connection.php';
 $user_ID = $_SESSION['user_id'];
