@@ -167,21 +167,41 @@ h3 {
 
 /* beginning of styles for profile page css */
 
+
 .profile-container {
     display: flex;
     min-height: 100vh;
 }
 
+.sidebar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    
+}
+
 .profile-sidebar {
     width: 250px; 
+    position: absolute;
+    transition: left 0.3s;
     background-color: #151515; 
     padding: 20px;
+    left: 0;
     box-sizing: border-box;
+    overflow-y: auto;
+    min-height: 104vh;
 }
 
 .profile-sidebar .profile-user-card {
     text-align: center;
     margin-bottom: 30px;
+}
+
+.profile-sidebar.active {
+    left: 0;  
 }
 
 .profile-sidebar .profile-user-avatar img {
@@ -217,6 +237,10 @@ h3 {
     background-color: #0E0E0E; 
     padding: 20px;
     box-sizing: border-box;
+    margin-left: 250px;
+    padding-left: 20px;
+    position: relative; 
+    z-index: 1;
 }
 
 .profile-main h1 {
@@ -320,47 +344,6 @@ h3 {
     background-color: #0056b3; 
 }
 
-/* icons for profile */
-.icon {
-    margin-right: 8px;
-}
-
-.icon-user:before {
-    content: '\f007';
-}
-
-.icon-cog:before {
-    content: '\f013';
-}
-
-.icon-sign-out:before {
-    content: '\f08b';
-}
-
-.profile-navigation a.active {
-    font-weight: bold;
-}
-
-.active-section {
-    display: block;
-}
-
-.profile-main section {
-    display: none;
-}
-
-.settings-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px; 
-  }
-  
-  .settings-form h2 {
-    margin-top: 20px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
-  }
-  
   .form-group {
     margin-bottom: 20px;
   }
@@ -474,6 +457,32 @@ h3 {
     box-shadow: 0 0 5px #333;
     z-index: -1;
   }
+
+  /* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-sidebar {
+        left: -250px; 
+        transition: left 0.3s;
+        position: fixed; 
+        z-index: 1000;
+    }
+
+    .profile-sidebar.active {
+        left: 0; 
+    }
+
+    .profile-main {
+        margin-left: 0; 
+    }
+
+    .sidebar-toggle {
+        display: block; 
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 1001; 
+    }
+}
 
 /* end of profile page style */
 

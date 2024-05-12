@@ -29,13 +29,14 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/style.css?v<?php echo time(); ?>"> 
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
 <body>
     <?php include "../widgets/navigation.php"; ?>
+    <button class="sidebar-toggle">&#9776;</button>
     <div class="profile-container">
         <aside class="profile-sidebar">
             <div class="profile-user-card">
@@ -104,6 +105,20 @@ if ($result->num_rows > 0) {
             </section>
         </main>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var toggle = document.querySelector('.sidebar-toggle');
+            var sidebar = document.querySelector('.profile-sidebar');
+
+            toggle.addEventListener('click', function () {
+                sidebar.classList.toggle('active');
+                // Optionally toggle a class on body or main to adjust layout
+            });
+        });
+
+    </script>
 </body>
 </html>
+
 
