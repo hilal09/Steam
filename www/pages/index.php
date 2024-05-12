@@ -23,7 +23,7 @@ if (isset($_SESSION['user_id'])) {
 
 </head>
     <body class="register_login">
-        <h1>Sign In to Steam</h1>
+        <h1>Sign In to Steam<sup class="tm">TM</sup></h1>
         <form  action="../functions/login.php" method="POST">
             <?php if (isset($_GET['error'])) { ?>
                 <p class="error"><?php echo $_GET['error']; ?></p>

@@ -18,7 +18,7 @@
 
 </head>
 <body class="register_login">
-    <h1>Sign Up to Steam</h1>
+    <h1>Sign up to Steam<sup class="tm">TM</sup></h1>
 
     <form action="../functions/register.php" method="POST">
         <!-- To display error -->
