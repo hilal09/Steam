@@ -1,4 +1,11 @@
 <?php
+/**
+ * Author: Melisa Rosic Emira
+ * Last modified on: 12.05.2024
+ * Title: Profile Page Functionality
+ * Summary: This script interacts with the database to handle account deletion and update user profile details, such as name, email, avatar, and password.  It maintains data integrity and redirects users as needed.
+ */
+
 session_start();
 require 'db_connection.php'; 
 

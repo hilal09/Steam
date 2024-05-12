@@ -126,6 +126,10 @@ if ($stmt) {
             echo "<p><strong>Genre:</strong> " . $row['genre'] . "</p>";
             echo "<p><strong>Platform:</strong> " . $row['platform'] . "</p>";
             echo "<p><strong>Seasons:</strong> " . $row['seasons'] . "</p>";
+            echo "<form action='../functions/add_to_my_series.php' method='POST'>";
+            echo "<input type='hidden' name='default_series_id' value='" . $row['id'] . "'>";
+            echo "<button type='submit' class='add-to-my-series-button' title='Add series to My Series'>+</button>";
+            echo "</form>";
             echo "</div>";
             if ($count % 2 != 0) {
                 echo "</div>";
