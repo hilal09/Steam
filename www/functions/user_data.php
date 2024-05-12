@@ -1,4 +1,10 @@
 <?php
+/**
+ * Author: Melisa Rosic Emira
+ * Last modified on: 12.05.2024
+ * Title: Title: User Account Functions
+ * Summary: This script retrieves user account information from the database and provides functions to get user details such as ID, name, email, and avatar.
+ */
 require 'db_connection.php';
 
 $sql = "SELECT * FROM user_accounts WHERE id = 1";
