@@ -6,13 +6,11 @@
  * Summary: This page handels the deletion of a series from the user's collection.
  *          It receives the series ID via POST request and should delete the corresponding entry from the database. 
  */
-
 session_start();
-include '../functions/db_connection.php'; 
-
+include '../functions/db_connection.php';
 
 if (isset($_POST['series_id'])) {
-    $seriesId = $_POST['series_id']; 
+    $seriesId = $_POST['series_id'];
 
     try {
         $sql = "DELETE FROM my_series WHERE id = ?";
@@ -21,9 +19,9 @@ if (isset($_POST['series_id'])) {
         $stmt->execute();
 
         echo "Series deleted successfully.";
-        header('Location: ../pages/dashboard.php'); 
-        exit;
     } catch (Exception $e) {
         echo "Failed to delete series: " . $e->getMessage();
     }
+    exit; // Exit after deleting the series
 }
+?>

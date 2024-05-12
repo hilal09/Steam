@@ -423,34 +423,35 @@
      });
  
      document.querySelectorAll(".delete-btn").forEach(function(button) {
-         button.addEventListener("click", function(){
-             console.log("Delete button clicked");
-             var seriesId = button.getAttribute("data-series-id");
- 
-             // Display confirmation message (you can customize this)
-             var confirmDelete = confirm("Are you sure you want to delete this series?");
-             console.log("Series ID:", seriesId);
-             // If user confirms deletion
-             if (confirmDelete) {
-                 // Send an AJAX request to delete the series
-                 fetch("../functions/delete_series.php", {
-                     method: "POST",
-                     body: "series_id=" + seriesId
-                 })
-                 .then(response => {
-                     if (response.ok) {
-                         // Refresh the page after deletion
-                         location.reload();
-                     } else {
-                         console.error("Failed to delete series");
-                     }
-                 })
-                 .catch(error => {
-                     console.error("Error:", error);
-                 });
-             }
-         });
-     });
+    button.addEventListener("click", function(){
+        var seriesId = button.getAttribute("data-series-id");
+
+        // Display confirmation message
+        var confirmDelete = confirm("Are you sure you want to delete this series?");
+
+        if (confirmDelete) {
+            fetch("../functions/delete_series.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: "series_id=" + seriesId // Send series ID in the body
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Refresh the page after successful deletion
+                    location.reload();
+                } else {
+                    console.error("Failed to delete series");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }
+    });
+});
+
      
      // Event listener für das Datei-Eingabefeld
      document.querySelector('.picture').addEventListener('change', function() {
