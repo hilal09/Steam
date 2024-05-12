@@ -1,9 +1,11 @@
 <?php
 /**
- * Author: Zeinab Barakat (add series functionality), Hilal Cubukcu(get series), Yudum Yilmaz (initial layout)
+ * Author: Zeinab Barakat (add series functionality and design), Hilal Cubukcu(get series), Yudum Yilmaz (initial layout)
  * Last modified on: 12.05.2024
  * Title: Dashboard Page 
- * Summary: This page displays the dashboard for logged-in users. It retrieves series data for the current user and allows users to add new series.
+ * Summary: This page displays the dashboard for logged-in users. It retrieves series data for the current user and allows users to add new series or delete them.
+ * 
+ * Note: I know that the styles belong in the stylesheet, but then my styles are overwritten. I could not solve this problem due to lack of time. (Zeinab)
  */
 
  session_start();
@@ -217,27 +219,6 @@
              opacity: 1;
          }
  
-         .delete-btn {
-             position: absolute;
-             top: 5px;
-             left: 5px;
-             width: auto;
-             height: 20px;
-             background-color: #CD3333;
-             color: #fff;
-             border: none;
-             border-radius: 4px;
-             cursor: pointer;
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             font-size: 15px;
-             opacity: 1;
-         }
-         .delete-btn:hover {
-             background-color: #fff; 
-             color: #CD3333; 
-         }
  
      </style>
  </head>
@@ -251,9 +232,7 @@
              <div class="series-list">
              <button class="open-popup">Add new series</button>
                  <?php while ($row = $result->fetch_assoc()) { ?>
-                     <!-- Serie anzeigen -->
                      <div class="series-item">
-                         <!-- Delete button --> 
                          <img src="data:image/jpg;base64,<?php echo base64_encode($row['picture']); ?>" alt="<?php echo $row['title']; ?>">
                          <div class="series-item-info">
                              <p><?php echo $row['title']; ?></p>
@@ -262,7 +241,7 @@
                              <p>Genre: <?php echo $row['genre']; ?></p>
                              <p>Platform: <?php echo $row['platform']; ?></p>
                          </div>
-                         <button type="button" value="1" name="delete-series" class="delete-btn" data-series-id="<?php echo $row['id']; ?>">Delete</button>
+                         <button id="delete-btn" type="button" value="1" name="delete-series" class="delete-btn" data-series-id="<?php echo $row['id']; ?>">&times</button>
                      </div>
                  <?php } ?>
              </div>
@@ -271,21 +250,18 @@
  
      <div class="content">
      <?php while ($row = $result->fetch_assoc()) { ?>
-         <!-- Start of series item -->
          <div class="series-item">
              <h3><?php echo $row['title']; ?></h3>
              <p>Year: <?php echo $row['year']; ?></p>
              <p>Seasons: <?php echo $row['seasons']; ?></p>
              <p>Genre: <?php echo $row['genre']; ?></p>
              <p>Platform: <?php echo $row['platform']; ?></p>
-             <!-- Display image if available -->
              <?php if ($row['picture']) { ?>
                  <img src="data:image/jpg;base64,<?php echo base64_encode($row['picture']); ?>" alt="<?php echo $row['title']; ?>">
              <?php } else { ?>
                  <p>No image available</p>
              <?php } ?>
          </div>
-         <!-- End of series item -->
      <?php } ?>
      </div>
  
@@ -344,44 +320,38 @@
  
  <script>
  document.addEventListener("DOMContentLoaded", function() {
-     // Function to toggle popup and disable/enable form elements
      function togglePopup(active) {
          const popup = document.querySelector(".popup");
          const formElements = document.querySelectorAll(".popup input, .popup select, .popup button");
  
          if (active) {
-             // Activate popup
              document.body.classList.add("active-popup");
              popup.style.opacity = 1;
              popup.style.top = "50%";
              popup.style.marginTop = "0px";
- 
-             // Disable form elements
+
              formElements.forEach(function(element) {
                  element.disabled = false;
              });
          } else {
-             // Deactivate popup
              document.body.classList.remove("active-popup");
              popup.style.opacity = 0;
              popup.style.top = "-100%";
              popup.style.marginTop = "-20px";
  
-             // Enable form elements
              formElements.forEach(function(element) {
                  element.disabled = true;
              });
          }
      }
  
-     // Initially disable form elements and hide popup
      togglePopup(false);
  
  
      document.querySelectorAll(".open-popup").forEach(function(button) {
          button.addEventListener("click", function(){
              togglePopup(true);
-             // Scrollen zum Anfang der Seite
+            
              window.scrollTo(0, 0);
          });
      });
@@ -392,28 +362,24 @@
  
      });
  
-     // Event listener for form submission
      document.getElementById("series-form").addEventListener("submit", function(event) {
-         event.preventDefault(); // Prevent default form submission
+         event.preventDefault(); 
  
-         // Fetch the form data
          const formData = new FormData(this);
- 
-         // Perform AJAX request to submit the form data
+
          fetch("../functions/add_series_function.php", {
              method: "POST",
              body: formData
          })
          .then(response => {
              if (response.ok) {
-                 // If submission is successful, close the popup and reset the form
                  document.body.classList.remove("active-popup");
                  togglePopup(false);
-                 document.getElementById("series-form").reset(); // Reset the form
-                 location.reload(); // Reload the page
-                 // Optionally, you can reload the page or perform other actions
+                 document.getElementById("series-form").reset();
+                 location.reload();
+                
              } else {
-                 // If submission fails, display an error message or perform other actions as needed
+                
                  console.error("Failed to submit series data");
              }
          })
@@ -422,47 +388,44 @@
          });
      });
  
-     document.querySelectorAll(".delete-btn").forEach(function(button) {
-    button.addEventListener("click", function(){
-        var seriesId = button.getAttribute("data-series-id");
+    document.querySelectorAll(".delete-btn").forEach(function(button) {
+        button.addEventListener("click", function(){
+            var seriesId = button.getAttribute("data-series-id");
 
-        // Display confirmation message
-        var confirmDelete = confirm("Are you sure you want to delete this series?");
+            var confirmDelete = confirm("Are you sure you want to delete this series?");
 
-        if (confirmDelete) {
-            fetch("../functions/delete_series.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: "series_id=" + seriesId // Send series ID in the body
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Refresh the page after successful deletion
-                    location.reload();
-                } else {
-                    console.error("Failed to delete series");
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-        }
+            if (confirmDelete) {
+                fetch("../functions/delete_series.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: "series_id=" + seriesId
+                })
+                .then(response => {
+                    if (response.ok) {
+                        
+                        location.reload();
+                    } else {
+                        console.error("Failed to delete series");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+            }
+        });
     });
-});
 
      
-     // Event listener für das Datei-Eingabefeld
      document.querySelector('.picture').addEventListener('change', function() {
-         const file = this.files[0]; // Erhalte die ausgewählte Datei
-         const fileName = file.name; // Erhalte den Dateinamen
-         const fileExtension = fileName.split('.').pop().toLowerCase(); // Erhalte die Dateierweiterung und konvertiere sie in Kleinbuchstaben
+         const file = this.files[0];
+         const fileName = file.name;
+         const fileExtension = fileName.split('.').pop().toLowerCase();
  
-     // Überprüfe, ob die Dateierweiterung .jpg oder .png ist
          if (fileExtension !== 'jpg' && fileExtension !== 'png') {
             alert('Bitte wählen Sie eine Datei mit der Erweiterung .jpg oder .png aus.');
-            // Setze den Wert des Datei-Eingabefelds auf leer, um die ungültige Datei zu löschen
+
             this.value = '';
          }
      }); 
