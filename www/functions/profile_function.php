@@ -8,12 +8,7 @@ if (isset($_POST['delete-account'])) {
     $conn->begin_transaction();
 
     try {
-        $sql = "DELETE FROM my_playlists WHERE user_id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $userId);
-        $stmt->execute();
-
-        $sql = "DELETE FROM my_series WHERE user_id = ?";
+       $sql = "DELETE FROM my_series WHERE user_id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $userId);
         $stmt->execute();

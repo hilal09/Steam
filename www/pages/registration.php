@@ -1,6 +1,7 @@
 <?php
 /**
  * Author: Hilal Cubukcu
+ * Last modified on: 12.05.2024
  * Title: Sign Up Page
  * Summary: This page allows users to sign up for a new account on Steam. If there's any error during registration, it will be displayed to the user.
  */

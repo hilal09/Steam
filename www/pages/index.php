@@ -1,6 +1,7 @@
 <?php
 /**
  * Author: Hilal Cubukcu
+ * Last modified on: 12.05.2024
  * Title: Login Page
  * Summary: This page allows users to sign in to their Steam account. If the user is already logged in, they are redirected to the dashboard page.
  */

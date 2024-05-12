@@ -1,6 +1,7 @@
 <?php
 /**
  * Author: Hilal Cubukcu
+ * Last modified on: 12.05.2024
  * Title: Registration Script
  * Summary: This script handles user registration for Steam. It validates user inputs, checks if the email is already registered, hashes the password, inserts the user into the database, and redirects to the dashboard upon successful registration.
  */

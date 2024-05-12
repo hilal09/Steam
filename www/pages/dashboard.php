@@ -1,6 +1,7 @@
 <?php
 /**
- * Author: Zeinab Barakat, Hilal Cubukcu(get series)
+ * Author: Zeinab Barakat (add series functionality), Hilal Cubukcu(get series), Yudum Yilmaz (initial layout)
+ * Last modified on: 12.05.2024
  * Title: Dashboard Page 
  * Summary: This page displays the dashboard for logged-in users. It retrieves series data for the current user and allows users to add new series.
  */

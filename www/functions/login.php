@@ -1,6 +1,7 @@
 <?php
 /**
  * Author: Hilal Cubukcu
+ * Last modified on: 12.05.2024
  * Title: User Authentication
  * Summary: This script handles user authentication for Steam. It verifies the user's credentials against the database and sets session variables upon successful login.
  */

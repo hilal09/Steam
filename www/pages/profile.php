@@ -4,9 +4,6 @@ require '../functions/db_connection.php';
 $user_ID = $_SESSION['user_id'];
 $sql = "SELECT * FROM user_accounts WHERE id = $user_ID";
 
-//$stmt = $conn->prepare($sql);
-//$stmt->bind_param("d", 1);
-// $stmt->execute();
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -18,7 +15,6 @@ if ($result->num_rows > 0) {
         $password = $row['password'];
         $avatar = $row['avatar'];
         $_SESSION['avatar'] = $row['avatar'];
-        //echo $user_ID." ". $name." ". $email." ". $avatar." ";
     }
 }
 ?>
@@ -113,7 +109,6 @@ if ($result->num_rows > 0) {
 
             toggle.addEventListener('click', function () {
                 sidebar.classList.toggle('active');
-                // Optionally toggle a class on body or main to adjust layout
             });
         });
 
