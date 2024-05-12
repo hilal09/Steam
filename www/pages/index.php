@@ -1,6 +1,7 @@
 <?php
 /**
  * Author: Hilal Cubukcu
+ * Last modified on: 12.05.2024
  * Title: Login Page
  * Summary: This page allows users to sign in to their Steam account. If the user is already logged in, they are redirected to the dashboard page.
  */
@@ -23,7 +24,7 @@ if (isset($_SESSION['user_id'])) {
 
 </head>
     <body class="register_login">
-        <h1>Sign In to Steam</h1>
+        <h1>Sign In to Steam<sup class="tm">TM</sup></h1>
         <form  action="../functions/login.php" method="POST">
             <?php if (isset($_GET['error'])) { ?>
                 <p class="error"><?php echo $_GET['error']; ?></p>

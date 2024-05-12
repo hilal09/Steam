@@ -1,3 +1,10 @@
+<!-- 
+Author: Yudum Yılmaz
+Last modified on: 12.05.2024
+Title: Navigation Bar
+Summary: This navigation bar provides links for various pages.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

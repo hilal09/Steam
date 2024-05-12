@@ -1,6 +1,7 @@
 <?php
 /**
  * Author: Hilal Cubukcu
+ * Last modified on: 12.05.2024
  * Title: Sign Up Page
  * Summary: This page allows users to sign up for a new account on Steam. If there's any error during registration, it will be displayed to the user.
  */
@@ -18,7 +19,7 @@
 
 </head>
 <body class="register_login">
-    <h1>Sign Up to Steam</h1>
+    <h1>Sign Up to Steam<sup class="tm">TM</sup></h1>
 
     <form action="../functions/register.php" method="POST">
         <!-- To display error -->
