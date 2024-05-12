@@ -11,7 +11,10 @@ Steam^tm is a web application designed to help users track their watched series.
 
 ### Series Management
 - **Add Series:** Users can add new series to their dashboard, providing details such as title, year, genre, platform, seasons, and a picture.
+- **Delete Series:** Users can delete series.
 - **Search Series:** Users can search for newly added series.
+- **Default library:** Users can add series from default library. 
+
 
 ### Profile Management
 - **Profile Page:** Users have a profile page where they can view and update their personal information.
@@ -32,7 +35,7 @@ Steam^tm is a web application designed to help users track their watched series.
 - Go to www/functions/db_connection.php
 
 ## Contributors Gruppe 09
-- **Barakat, Zeinab, 1714983:** Dashboard, AddSeries
+- **Barakat, Zeinab, 1714983:** Dashboard, AddSeries, DeleteSeries
 - **Cubukcu, Hilal, 1715678:** Database, Login, Registration
 - **Rosic Emira, Melisa, 1715377:** Profile
 - **Yilmaz, Yudum, 1715539:** Dashboard, Search Page
