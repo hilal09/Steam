@@ -22,7 +22,6 @@
     <h1>Sign up to Steam<sup class="tm">TM</sup></h1>
 
     <form action="../functions/register.php" method="POST">
-        <!-- To display error -->
         <?php if (isset($_GET['error'])) { ?>
             <p class="error"><?php echo $_GET['error']; ?></p>
         <?php } ?>

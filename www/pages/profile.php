@@ -14,7 +14,6 @@ $sql = "SELECT * FROM user_accounts WHERE id = $user_ID";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // output data of each row
     while($row = $result->fetch_assoc()) {
         $user_ID = $row['id'];
         $name = $row['name'];
@@ -63,9 +62,6 @@ if ($result->num_rows > 0) {
             <section id="profile-section" class="profile-content active">
                 <form class="account-form" action="../functions/profile_function.php" method="POST" enctype="multipart/form-data">
                     <h1>Account Settings</h1>
-                    <!--
-                        Calling the actual user data from the database.
-                     -->
                     <input type="hidden" name="userId" value="<?php echo $user_ID ?>">
                     <div class="form-group">
                         <label for="full-name">Name</label>

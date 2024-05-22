@@ -17,7 +17,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// datenbankverbindung
 include "db_connection.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,13 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_stmt_get_result($stmt);
 
     if ($row = mysqli_fetch_assoc($result)) {
-        // default serie zum user in "my series" hinzufügen
+
         $insert_sql = "INSERT INTO my_series (user_id, title, year, seasons, genre, platform, picture) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $insert_sql);
         mysqli_stmt_bind_param($stmt, "isissbs", $user_id, $row['title'], $row['year'], $row['seasons'], $row['genre'], $row['platform'], $row['picture_url']);
         mysqli_stmt_execute($stmt);
         
-        // überprüfen, ob abfrage korrekt
+
         if (mysqli_stmt_affected_rows($stmt) > 0) {
             echo "Default series added to My Series successfully.";
         } else {

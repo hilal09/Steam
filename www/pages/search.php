@@ -24,7 +24,6 @@ if (!isset($_SESSION['user_id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script>
-        // ajax = asynchronous javascript and xml, to make sure that search results are displayed on this page rather than directing to a new page
         function loadSearchResults(query, titleFilter, genreFilter, platformFilter) {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
@@ -116,18 +115,15 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="table-titles">
                     <h2 class="table-title">My Series</h2>
                 </div>
-        <!-- my series elements -->
             </div>
 
             <div class="default-series-container">
                 <div class="table-titles">
                     <h2 class="table-title">Default Series</h2>
             </div>
-        <!-- default series elements -->
+
             </div>
         </div>
-        
-        <!-- search results here -->
         <div id="search-results" class="search-results-container"></div>
         
     </div>
